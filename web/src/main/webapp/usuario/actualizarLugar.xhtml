@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+
+<ui:composition template="/WEB-INF/plantilla.xhtml">
+
+  <ui:define name="head">
+    <h:outputStylesheet library="css" name="mapbox-gl.css"/>
+    <h:outputScript library="js" name="mapbox-gl.js"/>
+    <h:outputScript library="js" name="script_lugar.js"/>
+  </ui:define>
+
+  <ui:define name="title">Lugar | Actualizar</ui:define>
+  <ui:define name="content">
+
+    <div class="row">
+
+      <div class="col">
+        <div class="mapa"
+             style="margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 100%">
+          <h3 style="margin-left: 6%">Selecione la ubicación</h3>
+          <div id='mapa' style="width: 80%;height:640px;margin-left: 6%" ></div>
+        </div>
+      </div>
+
+      <div class="col">
+
+        <h:form id="crear-lugar">
+
+          <h:inputHidden id="lat-lugar" value="#{mascotaBean.mascota.latitud}"/>
+          <h:inputHidden id="long-lugar" value="#{mascotaBean.mascota.longitud}"/>
+
+          <p:card styleClass="tarjeta"
+                  style="margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 80%;">
+            <f:facet name="title">
+              ¡Actualice su lugar!
+            </f:facet>
+            <p>Ingrese el codigo del lugar a modificar</p>
+            <h:panelGrid columns="2" cellpadding="5" width="100%">
+
+              <p:outputLabel for="id_lugar" value="Codigo:"/>
+              <p:inputText id="id_lugar" value="#{mascotaBean.mascota.id}" style="width: 100%"
+                           required="true"
+                           requiredMessage="El codigo del lugar es obligatorio"/>
+
+              <p:outputLabel for="nombre_lugar" value="Nombre:"/>
+              <p:inputText id="nombre_lugar" value="#{mascotaBean.mascota.nombre}" style="width: 100%"
+                           required="true"
+                           requiredMessage="El nombre de usuario es obligatorio"/>
+
+              <p:outputLabel for="ciudad_lugar" value="Ciudad:"/>
+              <p:selectOneMenu id="ciudad_lugar" value="#{mascotaBean.mascota.ciudad}"
+                               converter="#{ciudadConverter}"
+                               redisplay="true" style="width: 100%" required="true"
+                               requiredMessage="Ups! olvidaste seleccionar la ciudad">
+                <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
+                <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}" value="#{mascotaBean.ciudades}"/>
+              </p:selectOneMenu>
+
+              <p:outputLabel for="tipo_lugar" value="Tipo:"/>
+              <p:selectOneMenu id="tipo_lugar" value="#{mascotaBean.mascota.tipo}" converter="#{tipoConverter}"
+                               style="width: 100%" required="true"
+                               requiredMessage="Ups! olvidaste seleccionar un tipo">
+                <f:selectItem itemLabel="Seleccione un tipo" noSelectionOption="true"/>
+                <f:selectItems var="tipo" itemLabel="#{tipo.nombre}" value="#{mascotaBean.tipos}"/>
+              </p:selectOneMenu>
+
+
+              <p:outputLabel for="imagenes_lugar" value="Imagenes: " />
+              <p:fileUpload id="imagenes_lugar" listener="#{mascotaBean.subirImagenes}" mode="advanced"
+                            multiple="true" sizeLimit="1000000" fileLimit="5"
+                            allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" skinSimple="true"/>
+
+              <p:outputLabel for="descripcion_lugar" value="Descripcion:"/>
+              <p:inputTextarea id="descripcion_lugar" value="#{mascotaBean.mascota.descripcion}"
+                               style="width: 100%"
+                               required="true" requiredMessage="La descripcion es obligatoria"/>
+
+            </h:panelGrid>
+
+            <h:panelGrid columns="2" cellpadding="5" width="100%">
+
+              <p:commandButton action="#{mascotaBean.actualizarMascota}" value="Crear" update="@form"
+                               style="width: 50%; margin-left: 30%;margin-top: 5%"/>
+
+              <p:button href="/index.xhtml" value="Volver"
+                        style="width: 50%; margin-left: 20%;margin-top: 5%"/>
+
+              <p:growl showDetail="true"/>
+            </h:panelGrid>
+          </p:card>
+        </h:form>
+      </div>
+    </div>
+
+  </ui:define>
+</ui:composition>
+</html>

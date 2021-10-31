@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+
+<ui:composition template="/WEB-INF/plantilla.xhtml">
+
+    <ui:define name="head">
+        <h:outputStylesheet library="css" name="mapbox-gl.css"/>
+        <h:outputScript library="js" name="mapbox-gl.js"/>
+        <h:outputScript library="js" name="script_lugar.js"/>
+    </ui:define>
+
+    <ui:define name="title">Lugar | Eliminar</ui:define>
+    <ui:define name="content">
+
+                <h:form id="crear-lugar">
+
+                    <p:card styleClass="tarjetaUnica"
+                            style="margin-left: 30%; margin-right: 30%; margin-top: 10%; margin-bottom: 10%; width: 40%;">
+                        <f:facet name="title">
+                            Elimine su lugar
+                        </f:facet>
+
+                        <h:panelGrid columns="2" cellpadding="5" width="100%">
+                            <p:outputLabel for="id_lugar" value="Codigo:"/>
+                            <p:inputText id="id_lugar" value="#{mascotaBean.mascota.id}" style="width: 100%"
+                                         required="true"
+                                         requiredMessage="El id del lugar es obligatorio"/>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2" cellpadding="5" width="100%">
+                            <p:commandButton action="#{mascotaBean.eliminarMascota}" value="Eliminar" update="@form"
+                                             style="width: 50%; margin-left: 30%;margin-top: 5%"/>
+                            <p:button href="/index.xhtml" value="Volver"
+                                      style="width: 50%; margin-left: 20%;margin-top: 5%"/>
+                            <p:growl showDetail="true"/>
+                        </h:panelGrid>
+
+                    </p:card>
+                </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>
