@@ -28,7 +28,6 @@ public class Servicio implements Serializable {
     @Column(name = "descripcion",length = 200)
     private String descripcion;
 
-
     @Column(name = "horaInicio",length =100,nullable = false)
     @NotBlank
     private String horaInicio;

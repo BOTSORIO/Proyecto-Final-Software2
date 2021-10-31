@@ -20,6 +20,14 @@ public class Administrador extends Persona implements Serializable {
     @OneToMany(mappedBy = "administrador")
     private List<Servicio> servicios;
 
+    //================================= RELACION CON LA ENTIDAD PRODUCTO =================================//
+    @OneToMany(mappedBy = "administrador")
+    private List<Producto> productos;
+
+    //================================= RELACION CON LA ENTIDAD PRODUCTO =================================//
+    @OneToMany(mappedBy = "administrador")
+    private List<CategoriaProducto> categorias;
+
     //================================= CONSTRUCTOR  =================================//
     public Administrador(String id, String nombre, String nickname, String password, String email) {
         super(id, nombre, nickname, password, email);

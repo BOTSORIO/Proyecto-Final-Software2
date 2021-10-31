@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -11,7 +13,7 @@ import java.io.Serializable;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Producto implements Serializable {
+public class CategoriaProducto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,22 +27,18 @@ public class Producto implements Serializable {
     @Column(name = "descripcion",length = 200)
     private String descripcion;
 
-    @Column(name = "precio")
-    private double precio;
+    //================================= RELACION CON LA ENTIDAD PRODUCTO =================================//
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos;
 
     //================================= RELACION CON LA ENTIDAD ADMINISTRADOR =================================//
     @ManyToOne
     private Administrador administrador;
 
-    //================================= RELACION CON LA ENTIDAD CATEGORIAPRODUCTO =================================//
-    @ManyToOne
-    private CategoriaProducto categoria;
-
-    public Producto(String nombre, String descripcion, double precio, Administrador administrador, CategoriaProducto categoria) {
+    public CategoriaProducto(String nombre, String descripcion, Administrador administrador) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.precio = precio;
+        this.productos = new ArrayList<>();
         this.administrador = administrador;
-        this.categoria = categoria;
     }
 }

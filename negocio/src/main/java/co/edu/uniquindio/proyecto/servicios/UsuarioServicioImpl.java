@@ -32,23 +32,23 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     public Usuario registrarUsuario(Usuario u) throws Exception {
 
         if (u.getId().length()>10){
-            throw new Exception("La cedula solo puede tener 10 caracteres compa");
+            throw new Exception("La cedula solo puede tener 10 caracteres");
         }
 
         if (u.getNickname().length()>100){
-            throw new Exception("El nickname solo puede tener 100 caracteres compa");
+            throw new Exception("El nickname solo puede tener 100 caracteres");
         }
 
         if (u.getEmail().length()>100){
-            throw new Exception("El correo solo puede tener 100 caracteres compa");
+            throw new Exception("El correo solo puede tener 100 caracteres");
         }
 
         if (u.getNombre().length()>100){
-            throw new Exception("El nombre solo puede tener 100 caracteres compa");
+            throw new Exception("El nombre solo puede tener 100 caracteres");
         }
 
         if (u.getPassword().length()>100){
-            throw new Exception("La contraseña solo puede tener 100 caracteres compa");
+            throw new Exception("La contraseña solo puede tener 100 caracteres");
         }
 
         Optional<Usuario> usuarioNick=usuarioRepo.findByNickname(u.getNickname());
