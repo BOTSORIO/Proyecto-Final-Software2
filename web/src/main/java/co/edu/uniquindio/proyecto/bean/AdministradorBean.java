@@ -60,6 +60,9 @@ public class AdministradorBean implements Serializable {
     @Getter @Setter
     private Producto producto;
 
+    @Getter @Setter
+    private Producto productoN;
+
     @Value("${upload.url}")
     private String urlImagenes;
     private ArrayList<Imagen> imagenes;
@@ -78,6 +81,7 @@ public class AdministradorBean implements Serializable {
         this.servicio= new Servicio();
         this.categoria= new CategoriaProducto();
         this.producto = new Producto();
+        this.productoN= new Producto();
         this.imagenes = new ArrayList<>();
         this.categorias = categoriaServicio.listarCategorias();
         this.administrador = obtenerAdministrador();
@@ -265,49 +269,49 @@ public class AdministradorBean implements Serializable {
 
     public void eliminarProducto(){
 
-        try {
-            if (personaLogin!=null ) {
 
-                producto.setAdministrador(null);
-                producto.setCategoria(null);
-                productoServicio.eliminarProducto(producto.getId());
+        if (personaLogin != null) {
+            try {
 
-                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! el producto ha sido eliminado con exito");
+                Producto productoAux = productoServicio.obtenerProductoNombre(producto.getNombre());
+
+                productoServicio.actualizarProducto(productoAux);
+
+                List<Imagen> imagenes = imagenServicio.obtenerImagenesProducto(productoAux.getId());
+
+                for (Imagen i : imagenes) {
+                    imagenServicio.eliminarImagen(i.getId());
+                }
+
+                productoServicio.eliminarProducto(productoAux.getNombre());
+
+                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! el producto se elimino correctamente");
                 FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
 
-            }
+            } catch (Exception e) {
 
-        }catch (Exception e) {
-            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "No pudimos eliminar el producto");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+            }
         }
     }
 
     public void actualizarProducto() {
 
-        try {
-            if (personaLogin != null) {
+        if (personaLogin != null) {
 
-                Producto productoAux = productoServicio.obtenerProducto(producto.getId());
+            try {
 
-                if (productoAux != null) {
+                productoServicio.actualizarProducto(producto, productoN.getNombre());
+                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! el producto se actualizo correctamente");
+                FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
 
-                    productoAux.setAdministrador((Administrador) personaLogin);
-                    productoServicio.actualizarProducto(producto,productoAux.getId());
+            } catch (Exception e) {
 
-                    FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! el producto se actualizo con exito");
-                    FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "No pudimos actualizar el producto");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
 
-                } else {
-                    FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "No hemos podido encontrar el producto");
-                    FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
-                }
             }
-
-        } catch (Exception e) {
-            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
-
         }
     }
 

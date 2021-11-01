@@ -12,7 +12,9 @@ public interface ImagenServicio {
 
     void eliminarImagen (int id) throws Exception;
 
-    List<Imagen> obtenerImagenesMascota(int idLugar) throws Exception;
+    List<Imagen> obtenerImagenesMascota(int idMascota) throws Exception;
+
+    List<Imagen> obtenerImagenesProducto(int idProducto) throws Exception;
 
     Imagen obtenerImagen(int id) throws Exception;
 

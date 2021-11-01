@@ -23,20 +23,20 @@
 
       <div class="col">
 
-        <h:form id="actualizar-lugar">
+        <h:form id="actualizar-mascota">
 
           <p:card styleClass="tarjeta"
                   style="margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 80%;">
             <f:facet name="title">
-              ¡Actualice su lugar!
+              ¡Actualice su mascota!
             </f:facet>
-            <p>Ingrese el codigo de la mascota a modificar</p>
+            <p>Ingrese el nombre de la mascota a modificar</p>
             <h:panelGrid columns="2" cellpadding="5" width="100%">
 
-              <p:outputLabel for="id_mascota" value="Codigo:"/>
-              <p:inputText id="id_mascota" value="#{mascotaBean.mascota.id}" style="width: 100%"
+              <p:outputLabel for="nombre_mascota_busqueda" value="Nombre:"/>
+              <p:inputText id="nombre_mascota_busqueda" value="#{mascotaBean.mascotaN.nombre}" style="width: 100%"
                            required="true"
-                           requiredMessage="El codigo de la mascota es obligatorio"/>
+                           requiredMessage="El nombre de la mascota es obligatorio"/>
 
               <p:outputLabel for="tipo_mascota" value="Tipo:"/>
               <p:selectOneMenu id="tipo_mascota" value="#{mascotaBean.mascota.tipo}"

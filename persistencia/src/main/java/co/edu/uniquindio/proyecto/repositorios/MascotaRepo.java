@@ -14,6 +14,9 @@ public interface MascotaRepo extends JpaRepository<Mascota,Integer>{
     @Query("select m.tipo.nombre from Mascota m where m.id = :idMascota ")
     String obtenerTipoMascota(Integer idMascota);
 
+    @Query("select m from Mascota m where m.nombre like concat('%',:nombre, '%')")
+    Mascota obtenerMascotaNombre(String nombre);
+
     //Lugares que estan aprobados
     @Query("select m from Mascota m where m.nombre like concat('%',:nombre, '%') ")
     List<Mascota> buscarMascotas(String nombre);

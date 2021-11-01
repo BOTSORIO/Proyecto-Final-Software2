@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyecto.servicios;
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.repositorios.ImagenRepo;
 import co.edu.uniquindio.proyecto.repositorios.MascotaRepo;
+import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -11,11 +12,13 @@ import java.util.Optional;
 public class ImagenServicioImpl implements ImagenServicio{
 
     private final ImagenRepo imagenRepo;
-    private final MascotaRepo lugarRepo;
+    private final MascotaRepo mascotaRepo;
+    private final ProductoRepo productoRepo;
 
-    public ImagenServicioImpl(ImagenRepo imagenRepo, MascotaRepo lugarRepo) {
+    public ImagenServicioImpl(ImagenRepo imagenRepo, MascotaRepo mascotaRepo, ProductoRepo productoRepo) {
         this.imagenRepo = imagenRepo;
-        this.lugarRepo = lugarRepo;
+        this.mascotaRepo = mascotaRepo;
+        this.productoRepo = productoRepo;
     }
 
     @Override
@@ -51,9 +54,21 @@ public class ImagenServicioImpl implements ImagenServicio{
     }
 
     @Override
-    public List<Imagen> obtenerImagenesMascota(int idLugar) throws Exception {
+    public List<Imagen> obtenerImagenesMascota(int idMascota) throws Exception {
 
-        List<Imagen> imagenes = lugarRepo.obtenerImagenes(idLugar) ;
+        List<Imagen> imagenes = mascotaRepo.obtenerImagenes(idMascota) ;
+
+        if(imagenes ==null){
+            throw new Exception("No se encontraron las imagenes");
+        }
+
+        return imagenes;
+    }
+
+    @Override
+    public List<Imagen> obtenerImagenesProducto(int idProducto) throws Exception {
+
+        List<Imagen> imagenes = productoRepo.obtenerImagenes(idProducto) ;
 
         if(imagenes ==null){
             throw new Exception("No se encontraron las imagenes");

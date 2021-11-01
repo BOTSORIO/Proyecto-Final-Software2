@@ -30,9 +30,9 @@ public class ProductoServicioImpl  implements ProductoServicio {
     }
 
     @Override
-    public void actualizarProducto(Producto p, int id) throws Exception {
+    public void actualizarProducto(Producto p, String nombre) throws Exception {
 
-        Producto productoEncontrado = obtenerProducto(id);
+        Producto productoEncontrado = obtenerProductoNombre(nombre);
 
         if (productoEncontrado!=null){
             productoEncontrado.setNombre(p.getNombre());
@@ -45,9 +45,15 @@ public class ProductoServicioImpl  implements ProductoServicio {
     }
 
     @Override
-    public void eliminarProducto(int id) throws Exception {
+    public void actualizarProducto(Producto p) throws Exception {
 
-        Producto productoEncontrado = obtenerProducto(id);
+        productoRepo.save(p);
+    }
+
+    @Override
+    public void eliminarProducto(String nombre) throws Exception {
+
+        Producto productoEncontrado = obtenerProductoNombre(nombre);
 
         if (productoEncontrado!=null){
             productoRepo.delete(productoEncontrado);
@@ -66,6 +72,18 @@ public class ProductoServicioImpl  implements ProductoServicio {
         }
 
         return productoEncontrado.get();
+    }
+
+    @Override
+    public Producto obtenerProductoNombre(String nombre) throws Exception {
+
+        Producto productoEncontrado = productoRepo.obtenerProductoNombre(nombre);
+
+        if (productoEncontrado==null){
+            throw new Exception("El producto buscado no existe");
+        }
+
+        return productoEncontrado;
     }
 
     @Override

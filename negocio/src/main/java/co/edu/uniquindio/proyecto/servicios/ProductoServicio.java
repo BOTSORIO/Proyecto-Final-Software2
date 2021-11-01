@@ -7,11 +7,15 @@ public interface ProductoServicio {
 
     Producto registrarProducto(Producto p) throws Exception;
 
-    void actualizarProducto(Producto p,int id) throws Exception;
+    void actualizarProducto(Producto p,String nombre) throws Exception;
 
-    void eliminarProducto(int id) throws Exception;
+    void actualizarProducto(Producto p) throws Exception;
+
+    void eliminarProducto(String nombre) throws Exception;
 
     Producto obtenerProducto(int id) throws Exception;
+
+    Producto obtenerProductoNombre(String nombre) throws Exception;
 
     List<Producto> listarProductos();
 }

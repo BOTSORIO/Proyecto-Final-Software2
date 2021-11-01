@@ -25,9 +25,9 @@ public class MascotaServicioImpl implements MascotaServicio {
     }
 
     @Override
-    public void actualizarMascota(Mascota m, int codigoMascota) throws Exception {
+    public void actualizarMascota(Mascota m, String nombre) throws Exception {
 
-        Mascota mascota = obtenerMascota(codigoMascota);
+        Mascota mascota = obtenerMascotaNombre(nombre);
 
         if(mascota != null){
             mascota.setNombre(m.getNombre());
@@ -41,9 +41,9 @@ public class MascotaServicioImpl implements MascotaServicio {
     }
 
     @Override
-    public void eliminarMascota(int id) throws Exception {
+    public void eliminarMascota(String nombre) throws Exception {
 
-        Mascota mascotaEncontrada = obtenerMascota2(id);
+        Mascota mascotaEncontrada = obtenerMascotaNombre(nombre);
 
         if(mascotaEncontrada != null){
 
@@ -71,6 +71,18 @@ public class MascotaServicioImpl implements MascotaServicio {
       }
 
         return mascota.get();
+    }
+
+    @Override
+    public Mascota obtenerMascotaNombre(String nombre) throws Exception {
+
+        Mascota mascota = mascotaRepo.obtenerMascotaNombre(nombre);
+
+        if(mascota==null){
+            throw  new Exception("No se encontro la mascota");
+        }
+
+        return mascota;
     }
 
     @Override

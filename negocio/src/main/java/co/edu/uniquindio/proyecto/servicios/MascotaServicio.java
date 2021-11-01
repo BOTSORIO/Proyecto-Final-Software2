@@ -8,15 +8,17 @@ public interface MascotaServicio {
 
     Mascota registrarMascota(Mascota l) throws Exception;
 
-    void  actualizarMascota(Mascota l, int codigoLugar) throws Exception;
+    void  actualizarMascota(Mascota l,String nombre) throws Exception;
 
     void actualizarMascota(Mascota l) throws Exception;
 
-    void eliminarMascota(int id) throws Exception;
+    void eliminarMascota(String nombre) throws Exception;
 
     Mascota obtenerMascota(int id) throws Exception;
 
     Mascota obtenerMascota2(int id) throws Exception;
+
+    Mascota obtenerMascotaNombre(String nombre) throws Exception;
 
     List<Mascota> listarMascotas();
 

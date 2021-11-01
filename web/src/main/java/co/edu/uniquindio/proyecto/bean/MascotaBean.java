@@ -36,6 +36,10 @@ public class MascotaBean implements Serializable {
     @Setter
     private Mascota mascota;
 
+    @Getter
+    @Setter
+    private Mascota mascotaN;
+
     @Value("${upload.url}")
     private String urlImagenes;
     private ArrayList<Imagen> imagenes;
@@ -59,6 +63,7 @@ public class MascotaBean implements Serializable {
     @PostConstruct
     public void inicializar() {
         this.mascota = new Mascota();
+        this.mascotaN= new Mascota();
         this.tipos = tipoServicio.listarTipos();
         this.imagenes = new ArrayList<>();
 
@@ -100,13 +105,13 @@ public class MascotaBean implements Serializable {
 
             try {
 
-                mascotaServicio.actualizarMascota(mascota, mascota.getId());
+                mascotaServicio.actualizarMascota(mascota, mascotaN.getNombre());
                 FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! la mascota se actualizo correctamente");
                 FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
 
             } catch (Exception e) {
 
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "No pudimos actualizar el lugar");
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "No pudimos actualizar la mascota");
                 FacesContext.getCurrentInstance().addMessage(null, msg);
 
             }
@@ -163,17 +168,17 @@ public class MascotaBean implements Serializable {
         if (personaLogin != null) {
             try {
 
-                Mascota mascotaAux = mascotaServicio.obtenerMascota(mascota.getId());
+                Mascota mascotaAux = mascotaServicio.obtenerMascotaNombre(mascota.getNombre());
 
                 mascotaServicio.actualizarMascota(mascotaAux);
 
-                List<Imagen> imagenes = imagenServicio.obtenerImagenesMascota(mascota.getId());
+                List<Imagen> imagenes = imagenServicio.obtenerImagenesMascota(mascotaAux.getId());
 
                 for (Imagen i : imagenes) {
                     imagenServicio.eliminarImagen(i.getId());
                 }
 
-                mascotaServicio.eliminarMascota(mascota.getId());
+                mascotaServicio.eliminarMascota(mascotaAux.getNombre());
 
                 FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! la mascota se elimino correctamente");
                 FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
