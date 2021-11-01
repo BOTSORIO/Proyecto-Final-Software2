@@ -84,6 +84,10 @@ public class AdministradorBean implements Serializable {
 
     }
 
+    /***
+     * Metodo para obtener un administrador
+     * @return
+     */
     public Administrador obtenerAdministrador(){
 
         Administrador administradorEncontrado = new Administrador();
