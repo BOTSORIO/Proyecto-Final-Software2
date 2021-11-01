@@ -1,9 +1,11 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -35,6 +37,12 @@ public class Producto implements Serializable {
     //================================= RELACION CON LA ENTIDAD CATEGORIAPRODUCTO =================================//
     @ManyToOne
     private CategoriaProducto categoria;
+
+    //================================= RELACION CON LA ENTIDAD IMAGEN =================================//
+    @OneToMany(mappedBy = "producto",fetch=FetchType.EAGER)
+    @ToString.Exclude
+    @JsonIgnore
+    private List<Imagen> imagenes;
 
     public Producto(String nombre, String descripcion, double precio, Administrador administrador, CategoriaProducto categoria) {
         this.nombre = nombre;

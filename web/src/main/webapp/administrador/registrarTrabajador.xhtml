@@ -11,11 +11,23 @@
 
 <ui:composition template="/WEB-INF/plantilla.xhtml">
 
-    <ui:define name="title">Administrador | Registrar Moderador</ui:define>
+    <ui:define name="title">Administrador | Registrar Veterinarios</ui:define>
     <ui:define name="content">
 
+        <div class="row">
+
+        <div class="col">
+            <div class="card-img"
+                 style="margin-left: 12%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 100%">
+
+            </div>
+        </div>
+
+
+
+        <div class="col">
         <p:card styleClass="card"
-                style="margin-left: 30%; margin-right: 30%; margin-top: 2%; margin-bottom: 2%">
+                style="margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 80%;">
             <f:facet name="title">
                 ¡Regístrar moderador!
             </f:facet>
@@ -66,6 +78,9 @@
             </h:form>
 
         </p:card>
+
+        </div>
+        </div>
     </ui:define>
 </ui:composition>
 </html>

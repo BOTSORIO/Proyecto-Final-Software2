@@ -22,10 +22,7 @@ public class InformacionPorDefecto implements CommandLineRunner {
     private TipoServicio tipoServicio;
 
     @Autowired
-    private MascotaServicio mascotaServicio;
-
-    @Autowired
-    private UsuarioServicio usuarioServicio;
+    private CategoriaProductoServicio categoriaServicio;
 
     @Override
     public void run(String... args) throws Exception{
@@ -35,6 +32,8 @@ public class InformacionPorDefecto implements CommandLineRunner {
             Administrador admin1 = new Administrador("1193409775", "Sebastian", "BOTSORIO", "sebas123", "sebastianquinteroosorio2104@gmail.com");
             administradorServicio.registrarAdministrador(admin1);
 
+            Administrador admin2 = new Administrador("1193421285", "Braian", "Ghostbit", "braian123", "brahian0987@gmail.com");
+            administradorServicio.registrarAdministrador(admin2);
 
             Ciudad ciudad1 = new Ciudad("Calarcá");
             Ciudad ciudad3 = new Ciudad("Medellin");
@@ -58,11 +57,26 @@ public class InformacionPorDefecto implements CommandLineRunner {
             ciudadServicio.registrarCiudad(ciudad10);
             ciudadServicio.registrarCiudad(ciudad11);
 
-            Usuario u = new Usuario("12345", "Braian", "Ghostbit", "braian123", "braian@mail.com");
-            u.setCiudad(ciudad4);
-            usuarioServicio.registrarUsuario(u);
+            TipoMascota tipo1 = new TipoMascota("Perro");
+            TipoMascota tipo2 = new TipoMascota("Gato");
+            TipoMascota tipo3 = new TipoMascota("Hamster");
+            TipoMascota tipo4 = new TipoMascota("Ratón");
+            TipoMascota tipo5 = new TipoMascota("Ave");
+
+            tipoServicio.registrarTipo(tipo1);
+            tipoServicio.registrarTipo(tipo2);
+            tipoServicio.registrarTipo(tipo3);
+            tipoServicio.registrarTipo(tipo4);
+            tipoServicio.registrarTipo(tipo5);
+
+            CategoriaProducto categoria1 = new CategoriaProducto("Medicamentos",admin1);
+            CategoriaProducto categoria2 = new CategoriaProducto("Alimentos",admin1);
+            CategoriaProducto categoria3 = new CategoriaProducto("Accesorios",admin2);
+
+            categoriaServicio.registrarCategoria(categoria1);
+            categoriaServicio.registrarCategoria(categoria2);
+            categoriaServicio.registrarCategoria(categoria3);
 
         }
-
     }
 }

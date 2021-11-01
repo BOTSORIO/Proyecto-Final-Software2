@@ -71,20 +71,16 @@ public class MascotaBean implements Serializable {
 
                     mascota.setUsuario((Usuario) personaLogin);
 
-                    Mascota mascota = mascotaServicio.registrarMascota(this.mascota);
+                    Mascota mascotaCreada = mascotaServicio.registrarMascota(this.mascota);
 
                     for (Imagen i : imagenes) {
-                        i.setMascota(mascota);
+                        i.setMascota(mascotaCreada);
                         imagenServicio.registrarImagen(i);
                     }
 
-                    mascota.setImagenes(imagenes);
+                    mascotaCreada.setImagenes(imagenes);
 
-                    FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! el lugar se creo correctamente");
-                    FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
-
-                } else {
-                    FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "Es necesario ubicar el lugar dentro del mapa");
+                    FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! la mascota se creo correctamente");
                     FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
                 }
             }
@@ -105,7 +101,7 @@ public class MascotaBean implements Serializable {
             try {
 
                 mascotaServicio.actualizarMascota(mascota, mascota.getId());
-                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! el lugar se actualizo correctamente");
+                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! la mascota se actualizo correctamente");
                 FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
 
             } catch (Exception e) {
@@ -179,11 +175,11 @@ public class MascotaBean implements Serializable {
 
                 mascotaServicio.eliminarMascota(mascota.getId());
 
-                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! el lugar se elimino correctamente");
+                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! la mascota se elimino correctamente");
                 FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
 
             } catch (Exception e) {
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "No pudimos eliminar el lugar");
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "No pudimos eliminar la mascota");
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         }

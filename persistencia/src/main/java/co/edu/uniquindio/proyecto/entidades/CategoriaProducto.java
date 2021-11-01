@@ -41,4 +41,10 @@ public class CategoriaProducto implements Serializable {
         this.productos = new ArrayList<>();
         this.administrador = administrador;
     }
+
+    public CategoriaProducto(String nombre, Administrador administrador) {
+        this.nombre = nombre;
+        this.productos = new ArrayList<>();
+        this.administrador = administrador;
+    }
 }

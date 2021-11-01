@@ -11,28 +11,22 @@
 
 <ui:composition template="/WEB-INF/plantilla.xhtml">
 
-    <ui:define name="head">
-        <h:outputStylesheet library="css" name="mapbox-gl.css"/>
-        <h:outputScript library="js" name="mapbox-gl.js"/>
-        <h:outputScript library="js" name="script_lugar.js"/>
-    </ui:define>
-
-    <ui:define name="title">Lugar | Eliminar</ui:define>
+    <ui:define name="title">Mascota | Eliminar</ui:define>
     <ui:define name="content">
 
-                <h:form id="crear-lugar">
+                <h:form id="eliminar-mascota">
 
                     <p:card styleClass="tarjetaUnica"
                             style="margin-left: 30%; margin-right: 30%; margin-top: 10%; margin-bottom: 10%; width: 40%;">
                         <f:facet name="title">
-                            Elimine su lugar
+                            Elimine su mascota
                         </f:facet>
 
                         <h:panelGrid columns="2" cellpadding="5" width="100%">
-                            <p:outputLabel for="id_lugar" value="Codigo:"/>
-                            <p:inputText id="id_lugar" value="#{mascotaBean.mascota.id}" style="width: 100%"
+                            <p:outputLabel for="id_mascota" value="Codigo:"/>
+                            <p:inputText id="id_mascota" value="#{mascotaBean.mascota.id}" style="width: 100%"
                                          required="true"
-                                         requiredMessage="El id del lugar es obligatorio"/>
+                                         requiredMessage="El id de la mascota es obligatorio"/>
                         </h:panelGrid>
 
                         <h:panelGrid columns="2" cellpadding="5" width="100%">

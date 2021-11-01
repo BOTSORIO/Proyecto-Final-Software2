@@ -29,6 +29,10 @@ public class Imagen implements Serializable {
     @ManyToOne
     private Mascota mascota;
 
+    //================================= RELACION CON LA ENTIDAD MASCOTA =================================//
+    @ManyToOne
+    private Producto producto;
+
     //================================= CONSTRUCTOR  =================================//
     public Imagen(String url) {
         this.url = url;

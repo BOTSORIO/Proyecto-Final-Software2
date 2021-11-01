@@ -14,18 +14,22 @@ public class Administrador extends Persona implements Serializable {
 
     //================================= RELACION CON LA ENTIDAD TRABAJADOR =================================//
     @OneToMany(mappedBy = "administrador")
+    @ToString.Exclude
     private List<Trabajador> trabajadores;
 
     //================================= RELACION CON LA ENTIDAD SERVICIO =================================//
     @OneToMany(mappedBy = "administrador")
+    @ToString.Exclude
     private List<Servicio> servicios;
 
     //================================= RELACION CON LA ENTIDAD PRODUCTO =================================//
     @OneToMany(mappedBy = "administrador")
+    @ToString.Exclude
     private List<Producto> productos;
 
-    //================================= RELACION CON LA ENTIDAD PRODUCTO =================================//
+    //================================= RELACION CON LA ENTIDAD CATEGORIA =================================//
     @OneToMany(mappedBy = "administrador")
+    @ToString.Exclude
     private List<CategoriaProducto> categorias;
 
     //================================= CONSTRUCTOR  =================================//
@@ -33,6 +37,8 @@ public class Administrador extends Persona implements Serializable {
         super(id, nombre, nickname, password, email);
         trabajadores = new ArrayList<>();
         servicios= new ArrayList<>();
+        productos= new ArrayList<>();
+        categorias= new ArrayList<>();
     }
 
 

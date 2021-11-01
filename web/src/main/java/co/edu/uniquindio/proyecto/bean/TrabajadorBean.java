@@ -55,7 +55,6 @@ public class TrabajadorBean implements Serializable {
                 e.printStackTrace();
             }
         }
-
         return trabajadorEncontrado;
     }
 
