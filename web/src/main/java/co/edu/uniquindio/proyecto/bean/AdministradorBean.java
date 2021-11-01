@@ -15,6 +15,7 @@ import org.springframework.web.context.annotation.RequestScope;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@RequestScope
+@ViewScoped
 public class AdministradorBean implements Serializable {
 
     @Autowired
