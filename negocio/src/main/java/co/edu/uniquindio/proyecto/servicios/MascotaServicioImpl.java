@@ -97,7 +97,6 @@ public class MascotaServicioImpl implements MascotaServicio {
         return mascota;
     }
 
-
     @Override
     public List<Mascota> listarMascotas() {
         return mascotaRepo.findAll();
@@ -117,7 +116,5 @@ public class MascotaServicioImpl implements MascotaServicio {
 
         return lugares;
     }
-
-
 
 }

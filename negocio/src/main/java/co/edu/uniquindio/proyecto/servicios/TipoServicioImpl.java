@@ -40,7 +40,6 @@ public class TipoServicioImpl implements TipoServicio{
 
     }
 
-
     @Override
     public void eliminarTipo(int id) throws Exception {
 

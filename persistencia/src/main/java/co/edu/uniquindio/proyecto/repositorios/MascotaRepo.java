@@ -33,4 +33,5 @@ public interface MascotaRepo extends JpaRepository<Mascota,Integer>{
     @Query("select m from Mascota m where m.usuario.id= :idUsuario")
     List<Mascota> obtenerMascotasPorUsuario(String idUsuario);
 
+
 }

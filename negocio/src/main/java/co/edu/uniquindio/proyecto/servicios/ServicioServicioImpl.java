@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class ServicioServicioImpl implements ServicioServicio{
 
@@ -15,7 +14,6 @@ public class ServicioServicioImpl implements ServicioServicio{
     public ServicioServicioImpl(ServicioRepo servicioRepo) {
         this.servicioRepo = servicioRepo;
     }
-
 
     @Override
     public Servicio registrarServicio(Servicio s) throws Exception {
