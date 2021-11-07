@@ -19,21 +19,24 @@
                     <p:card styleClass="tarjetaUnica"
                             style="margin-left: 30%; margin-right: 30%; margin-top: 10%; margin-bottom: 10%; width: 40%;">
                         <f:facet name="title">
-                            Elimine su mascota
+                            <font color="#34495E" >Elimine su mascota</font>
                         </f:facet>
 
-                        <h:panelGrid columns="2" cellpadding="5" width="100%">
+                        <p>Para eliminar una mascota registrada en Care Pet debe ingresar su nombre y presionar el botón de eliminar</p>
+
+                        <h:panelGrid columns="2" cellpadding="5" width="100%" >
                             <p:outputLabel for="id_mascota" value="Nombre:"/>
                             <p:inputText id="id_mascota" value="#{mascotaBean.mascota.nombre}" style="width: 100%"
                                          required="true"
                                          requiredMessage="El nombre de la mascota es obligatorio"/>
                         </h:panelGrid>
-
+                        <br></br>
                         <h:panelGrid columns="2" cellpadding="5" width="100%">
                             <p:commandButton action="#{mascotaBean.eliminarMascota}" value="Eliminar" update="@form"
-                                             style="width: 50%; margin-left: 30%;margin-top: 5%"/>
+                                             style="background: #2F8DF1;width: 120px; margin-left: 40%;margin-top: 5%"/>
+
                             <p:button href="/index.xhtml" value="Volver"
-                                      style="width: 50%; margin-left: 20%;margin-top: 5%"/>
+                                      style="background: #2F8DF1;width: 120px; margin-left: 15%;margin-top: 5%"/>
                             <p:growl showDetail="true"/>
                         </h:panelGrid>
 

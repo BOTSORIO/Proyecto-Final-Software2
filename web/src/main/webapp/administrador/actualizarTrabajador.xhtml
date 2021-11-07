@@ -16,14 +16,14 @@
     <p:card styleClass="card"
             style="margin-left: 30%; margin-right: 30%; margin-top: 2%; margin-bottom: 2%">
       <f:facet name="title">
-        ¡Actualice los datos del moderador!
+        <font color="#34495E" >¡Actualice los datos del moderador!</font>
       </f:facet>
 
-      <p>Hola! en el siguiente formulario puedes indicarnos los datos que desea modificar del moderador.</p>
+      <p>¡Hola! en el siguiente formulario puedes indicarnos los datos que desea modificar del veterinario.</p>
 
       <h:form>
 
-        <p>Ingrese la cedula del moderador a actualizar</p>
+        <p>Ingrese la cedula del veterinario a actualizar</p>
         <h:panelGrid columns="2" cellpadding="5" width="100%">
 
           <p:outputLabel for="cedula_trabajador_busqueda" value="Cedula:"/>
@@ -50,17 +50,19 @@
                       requiredMessage="Ups! olvidaste la contraseña"/>
 
         </h:panelGrid>
-        <div class="form-group row justify-content-center" style="margin: 5%">
-          <div class="col">
-            <p:commandButton action="#{administradorBean.actualizarTrabajador}" value="Actualizar"
-                             update="@form"
-                             style="width: 90%"/>
-          </div>
-          <div class="col">
-            <p:button href="/index.xhtml" value="Volver" style="width: 90%"/>
-          </div>
-        </div>
-        <p:growl showDetail="true"/>
+
+        <br></br>
+        <h:panelGrid columns="2" cellpadding="5" width="100%">
+
+          <p:commandButton action="#{administradorBean.actualizarTrabajador}" value="Actualizar" update="@form"
+                           style="background: #2F8DF1;width: 120px; margin-left: 35%;margin-top: 5%"/>
+
+          <p:button href="/index.xhtml" value="Volver"
+                    style="background: #2F8DF1;width: 120px; margin-left: 15%;margin-top: 5%"/>
+
+          <p:growl showDetail="true"/>
+        </h:panelGrid>
+
       </h:form>
 
     </p:card>

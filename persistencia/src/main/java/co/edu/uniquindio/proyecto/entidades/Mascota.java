@@ -23,12 +23,10 @@ public class Mascota implements Serializable {
     private int id;
 
     @Column(name = "nombre",length =100, nullable = false)
-    @NotBlank
     @Size(max = 100)
     private String nombre;
 
     @Column(name = "raza",length =50)
-    @NotBlank
     @Size(max = 200)
     private String raza;
 

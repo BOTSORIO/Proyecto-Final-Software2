@@ -15,22 +15,14 @@
   <ui:define name="title">Mascota | Actualizar</ui:define>
   <ui:define name="content">
 
-    <div class="row">
-
-      <div class="col">
-
-      </div>
-
-      <div class="col">
-
         <h:form id="actualizar-mascota">
 
           <p:card styleClass="tarjeta"
-                  style="margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 80%;">
+                  style="margin-left: 30%; margin-right: 30%; margin-top: 2%; margin-bottom: 2%">
             <f:facet name="title">
-              ¡Actualice su mascota!
+              <font color="#34495E" >¡Actualice su mascota!</font>
             </f:facet>
-            <p>Ingrese el nombre de la mascota a modificar</p>
+            <p>Ingrese el nombre de la mascota a modificar y luego proceda a ingresar la información</p>
             <h:panelGrid columns="2" cellpadding="5" width="100%">
 
               <p:outputLabel for="nombre_mascota_busqueda" value="Nombre:"/>
@@ -39,23 +31,17 @@
                            requiredMessage="El nombre de la mascota es obligatorio"/>
 
               <p:outputLabel for="tipo_mascota" value="Tipo:"/>
-              <p:selectOneMenu id="tipo_mascota" value="#{mascotaBean.mascota.tipo}"
-                               converter="#{tipoConverter}"
-                               required="true"
-                               requiredMessage="El tipo de la mascota es obligatorio">
+              <p:selectOneMenu id="tipo_mascota" value="#{mascotaBean.mascota.tipo}" style="width: 100%;"
+                               converter="#{tipoConverter}">
                 <f:selectItem itemLabel="Seleccione un tipo" noSelectionOption="true"/>
                 <f:selectItems var="tipo" itemLabel="#{tipo.nombre}" value="#{mascotaBean.tipos}"/>
               </p:selectOneMenu>
 
               <p:outputLabel for="raza_mascota" value="Raza:"/>
-              <p:inputText id="raza_mascota" value="#{mascotaBean.mascota.raza}" style="width: 100%"
-                           required="true"
-                           requiredMessage="La raza de la mascota es obligatorio"/>
+              <p:inputText id="raza_mascota" value="#{mascotaBean.mascota.raza}" style="width: 100%"/>
 
               <p:outputLabel for="nombre_mascota" value="Nombre:"/>
-              <p:inputText id="nombre_mascota" value="#{mascotaBean.mascota.nombre}" style="width: 100%"
-                           required="true"
-                           requiredMessage="El nombre de la mascota es obligatorio"/>
+              <p:inputText id="nombre_mascota" value="#{mascotaBean.mascota.nombre}" style="width: 100%"/>
 
               <p:outputLabel for="vacunas_mascota" value="Cantidad vacunas:"/>
               <p:inputText id="vacunas_mascota" value="#{mascotaBean.mascota.cantidadVacunas}" style="width: 100%"/>
@@ -69,21 +55,21 @@
                             allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" skinSimple="true"/>
 
             </h:panelGrid>
+            <br></br>
 
             <h:panelGrid columns="2" cellpadding="5" width="100%">
 
-              <p:commandButton action="#{mascotaBean.actualizarMascota}" value="Crear" update="@form"
-                               style="width: 50%; margin-left: 30%;margin-top: 5%"/>
+              <p:commandButton action="#{mascotaBean.actualizarMascota}" value="Actualizar" update="@form"
+                               style="background: #2F8DF1;width: 120px; margin-left: 40%;margin-top: 5%"/>
 
               <p:button href="/index.xhtml" value="Volver"
-                        style="width: 50%; margin-left: 20%;margin-top: 5%"/>
+                        style="background: #2F8DF1;width: 120px; margin-left: 15%;margin-top: 5%"/>
 
               <p:growl showDetail="true"/>
             </h:panelGrid>
           </p:card>
         </h:form>
-      </div>
-    </div>
+
 
   </ui:define>
 </ui:composition>

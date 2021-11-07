@@ -15,6 +15,7 @@
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     <h:outputScript library="js" name="bootstrap.bundle.min.js"/>
     <h:outputStylesheet library="css" name="style.css"/>
+    <script src="https://kit.fontawesome.com/0f7ba84938.js" crossorigin="anonymous"></script>
 
 
     <ui:insert name="head"></ui:insert>
@@ -22,13 +23,13 @@
     <title><ui:insert name="title">Título</ui:insert></title>
 </h:head>
 
-<h:body>
+<h:body >
 
     <div id="header">
         <ui:insert name="header">
-            <nav class="navbar navbar-expand-lg py-3 navbar-dark " style="background: #2471A3">
+            <nav class="navbar navbar-expand-lg py-3 navbar-dark " style="background: #2F8DF1 ">
                 <div class="container">
-                    <a class="navbar-brand" ><i class="pi pi-github"></i> CarePet</a>
+                    <a class="navbar-brand"  href="/"><i class="fas fa-paw"></i> <font face="Comic Sans MS,arial,verdana">CarePet</font></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarColor02"
                             aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,13 +37,6 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarColor02">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/">
-                                <i class="pi pi-home"/>
-                                    Inicio
-                                </a>
-                            </li>
-
 
                             <li class="nav-item"
                                 jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol=='usuario'}">
@@ -86,7 +80,7 @@
                                 jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol=='usuario'}">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_lugar" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="pi pi-map-marker"/>
+                                    <i class="fas fa-dog"></i>
                                     Mascotas
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown_lugar">
@@ -104,8 +98,8 @@
                                 jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol=='admin'}">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="pi pi-users"/>
-                                    Trabajadores
+                                    <i class="fas fa-user-md"></i>
+                                    Veterinarios
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown_lugar">
                                     <li><a class="dropdown-item" href="/administrador/registrarTrabajador.xhtml"><i
@@ -126,7 +120,7 @@
                                 jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol=='admin'}">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_productos" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="pi pi-map-marker"/>
+                                    <i class="fas fa-bone"></i>
                                     Productos
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown_productos">

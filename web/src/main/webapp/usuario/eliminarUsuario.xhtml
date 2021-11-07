@@ -18,10 +18,11 @@
         <p:card styleClass="card"
                 style="margin-left: 30%; margin-right: 30%; margin-top: 2%; margin-bottom: 2%">
             <f:facet name="title">
-                Lamentamos que te vayas
+                <font color="#34495E" >Eliminar cuenta</font>
             </f:facet>
 
-            <p>Por favor ingresa tu email para eliminar tu cuenta.</p>
+            <p><font color="#000000" >Lamentamos que te vayas, te deseamos buena suerte.</font></p>
+            <p><font color="#000000" >Por favor ingresa tu email y contraseña para eliminar la cuenta.</font></p>
 
             <h:form>
                 <p:outputLabel for="email_usuario" value="Email:"/>
@@ -29,17 +30,22 @@
                              required="true"
                              requiredMessage="Ups! olvidaste el email"/>
 
+                <br></br>
+                <br></br>
+
                 <p:outputLabel for="contrasenia_usuario" value="Contraseña:"/>
                 <p:password id="contrasenia_usuario" value="#{usuarioBean.usuario.password}" feedback="true"
                             promptLabel="Ingresa tu contraseña" weakLabel="Débil"
                             goodLabel="Buena" strongLabel="Fuerte" redisplay="true" style="width: 100%" required="true"
                             requiredMessage="Ups! olvidaste la contraseña"/>
 
+                <br></br>
+                <br></br>
                 <h:panelGrid id="Botones" columns="2" width="100%">
                     <p:commandButton action="#{usuarioBean.eliminarUsuario}" value="Eliminar"
                                      update="@form"
-                                     style="width: 100px; margin-left: 40%; margin-top: 5%"/>
-                    <p:button href="/index.xhtml" value="Volver" style="width: 100px; margin-left: 20%; margin-top: 5%"/>
+                                     style="width: 120px; margin-left: 35%; margin-top: 5%"/>
+                    <p:button href="/index.xhtml" value="Volver" style="width: 120px; margin-left: 20%; margin-top: 5%"/>
                     <p:growl showDetail="true"/>
                 </h:panelGrid>
 

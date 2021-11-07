@@ -12,16 +12,15 @@
 
 <ui:composition template="/WEB-INF/plantilla.xhtml">
 
-    <ui:define name="title">Lugar | Crear</ui:define>
+    <ui:define name="title">Mascota | Crear</ui:define>
     <ui:define name="content">
 
         <div class="row">
 
             <div class="col">
-                <div class="mapa"
-                     style="margin-left: 12%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 100%">
 
-                </div>
+                    <img src="${pageContext.request.contextPath}/resources/img/mascotas.png" alt="" style="margin-left: 20%;height: 70%;width: 70%; margin-top: 15%"/>
+
             </div>
 
             <div class="col">
@@ -31,13 +30,13 @@
                     <p:card styleClass="tarjeta"
                             style="margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 80%;">
                         <f:facet name="title">
-                            ¡Regístrese su mascota!
+                            <font color="#34495E" >¡Regístrese su mascota!</font>
                         </f:facet>
 
                         <h:panelGrid columns="2" cellpadding="3" width="100%">
 
                             <p:outputLabel for="tipo_mascota" value="Tipo:"/>
-                            <p:selectOneMenu id="tipo_mascota" value="#{mascotaBean.mascota.tipo}"
+                            <p:selectOneMenu id="tipo_mascota" value="#{mascotaBean.mascota.tipo}" style="width: 100%"
                                              converter="#{tipoConverter}"
                                              required="true"
                                              requiredMessage="El tipo de la mascota es obligatorio">
@@ -64,17 +63,18 @@
                             <p:outputLabel for="imagenes_lugar" value="Imagenes: "/>
                             <p:fileUpload id="imagenes_lugar" listener="#{mascotaBean.subirImagenes}" mode="advanced"
                                           multiple="true" sizeLimit="1000000" fileLimit="5"
-                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" skinSimple="true"/>
+                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" skinSimple="true" />
 
                         </h:panelGrid>
+                        <br></br>
 
-                        <h:panelGrid columns="2" cellpadding="5" width="100%">
+                        <h:panelGrid columns="2" cellpadding="5" width="100%" >
 
                             <p:commandButton action="#{mascotaBean.registrarMascota}" value="Crear" update="@form"
-                                             style="width: 50%; margin-left: 30%;margin-top: 5%"/>
+                                             style="background: #2F8DF1;width: 50%; margin-left: 40%;margin-top: 5%"/>
 
                             <p:button href="/index.xhtml" value="Volver"
-                                      style="width: 50%; margin-left: 20%;margin-top: 5%"/>
+                                      style="background: #2F8DF1;width: 50%; margin-left: 15%;margin-top: 5%"/>
 
                         </h:panelGrid>
 
