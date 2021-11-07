@@ -51,7 +51,6 @@ public class MascotaBean implements Serializable {
     @Value(value = "#{seguridadBean.persona}")
     private Persona personaLogin;
 
-
     public MascotaBean(MascotaServicio lugarServicio, UsuarioServicio usuarioServicio, TipoServicio tipoServicio, ImagenServicio imagenServicio, MailService mailService) {
         this.mascotaServicio = lugarServicio;
         this.usuarioServicio = usuarioServicio;
@@ -98,7 +97,6 @@ public class MascotaBean implements Serializable {
         return null;
     }
 
-
     public void actualizarMascota() {
 
         if (personaLogin != null) {
@@ -120,7 +118,6 @@ public class MascotaBean implements Serializable {
 
     }
 
-
     public void subirImagenes(FileUploadEvent event) {
 
         UploadedFile imagen = event.getFile();
@@ -133,7 +130,6 @@ public class MascotaBean implements Serializable {
             imagenes.add(foto);
         }
     }
-
 
     public String subirImagen(UploadedFile file) {
 
@@ -189,6 +185,5 @@ public class MascotaBean implements Serializable {
             }
         }
     }
-
 
 }

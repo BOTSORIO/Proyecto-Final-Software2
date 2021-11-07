@@ -33,6 +33,4 @@ public class ServicioBean implements Serializable {
 
     }
 
-
-
 }

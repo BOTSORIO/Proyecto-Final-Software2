@@ -46,7 +46,6 @@ public class DetalleMascotaBean implements Serializable {
     @PostConstruct
     public void inicializar(){
 
-
         if (idMascota!=null && !"".equals(idMascota)){
             try {
                 int id = Integer.parseInt(idMascota);
@@ -67,7 +66,6 @@ public class DetalleMascotaBean implements Serializable {
                     urlImagenes.add("default.png");
                 }
 
-
                 List<Mascota>mascotas=new ArrayList<>();
                 mascotas.add(mascota);
 
@@ -76,7 +74,6 @@ public class DetalleMascotaBean implements Serializable {
             }
         }
     }
-
 
     public void sendMailComentario(){
 

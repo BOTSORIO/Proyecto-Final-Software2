@@ -61,7 +61,6 @@ public class Mascota implements Serializable {
     @JsonIgnore
     private List<Imagen> imagenes;
 
-
     //================================= RELACION CON LA ENTIDAD SERVICIO =================================//
     @ManyToOne
     private Servicio servicio;
@@ -97,6 +96,5 @@ public class Mascota implements Serializable {
 
         return "default.png";
     }
-
 
 }
