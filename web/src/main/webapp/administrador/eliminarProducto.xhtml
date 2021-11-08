@@ -17,11 +17,13 @@
                 <h:form id="eliminar-producto">
 
                     <p:card styleClass="tarjetaUnica"
-                            style="margin-left: 30%; margin-right: 30%; margin-top: 10%; margin-bottom: 10%; width: 40%;">
+                            style="border-radius: 15px;margin-left: 30%; margin-right: 30%; margin-top: 10%; margin-bottom: 10%; width: 40%;">
                         <f:facet name="title">
-                            Elimine un producto
+                            <font color="#34495E" face="Comic Sans MS,arial,verdana"> Elimine un producto</font>
                         </f:facet>
 
+                        <p><font color="#000000" >Por favor ingresa el nombre del producto que desea eliminar.</font></p>
+                        <br></br>
                         <h:panelGrid columns="2" cellpadding="5" width="100%">
                             <p:outputLabel for="nombre_producto" value="Nombre:"/>
                             <p:inputText id="nombre_producto" value="#{administradorBean.producto.nombre}" style="width: 100%"
@@ -29,11 +31,13 @@
                                          requiredMessage="El nombre del producto es obligatorio"/>
                         </h:panelGrid>
 
+                        <br></br>
+
                         <h:panelGrid columns="2" cellpadding="5" width="100%">
-                            <p:commandButton action="#{administradorBean.eliminarProducto}" value="Eliminar" update="@form"
-                                             style="width: 50%; margin-left: 30%;margin-top: 5%"/>
-                            <p:button href="/index.xhtml" value="Volver"
-                                      style="width: 50%; margin-left: 20%;margin-top: 5%"/>
+                            <p:commandButton action="#{administradorBean.eliminarProducto}" value="Eliminar"
+                                             update="@form"
+                                             style="width: 120px; margin-left: 35%; margin-top: 5%"/>
+                            <p:button href="/index.xhtml" value="Volver" style="width: 120px; margin-left: 20%; margin-top: 5%"/>
                             <p:growl showDetail="true"/>
                         </h:panelGrid>
 

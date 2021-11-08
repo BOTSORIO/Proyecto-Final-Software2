@@ -20,7 +20,8 @@
 
     <ui:insert name="head"></ui:insert>
 
-    <title><ui:insert name="title">Título</ui:insert></title>
+    <title><ui:insert name="title">CarePet</ui:insert></title>
+
 </h:head>
 
 <h:body >
@@ -163,11 +164,11 @@
                             </h:form>
                             <p:commandButton styleClass="ui-button-raised ui-button-secondary" value="Login"
                                              onclick="PF('dlg1').show()" icon="pi pi-sign-in" iconPos="left"
-                                             rendered="#{!seguridadBean.autenticado}"/>
+                                             rendered="#{!seguridadBean.autenticado}" style="background: #34495E"/>
                             <p:commandButton styleClass="ui-button-raised ui-button-secondary" value="Logout"
                                              action="#{seguridadBean.cerrarSesion}"
                                              rendered="#{seguridadBean.autenticado}" icon="pi pi-sign-out"
-                                             iconPos="left"/>
+                                             iconPos="left" style="background: #34495E"/>
                         </div>
                     </div>
                 </div>
@@ -252,13 +253,6 @@
 
     <div id="footer" class="footer">
         <ui:insert name="footer">
-            <div class="py-4 bg-light" align="center">
-                <div class="justify-content-center">
-                    <div class="col-10">
-                        <span>Universidad del Quindío - Software 2 - 2021</span>
-                    </div>
-                </div>
-            </div>
         </ui:insert>
     </div>
 </h:body>

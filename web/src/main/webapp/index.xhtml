@@ -9,38 +9,86 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xml:lang="en" lang="en">
 
+
 <ui:composition template="/WEB-INF/plantilla.xhtml">
 
 
     <ui:define name="title">CarePet</ui:define>
     <ui:define name="content">
 
-       <h1 style="margin-left: 60px;margin-top: 30px"> <font color="#34495E" face="Comic Sans MS,arial,verdana"> Bienvenidos a CarePet</font></h1>
+        <h1 style="margin-left: 60px;margin-top: 30px"><font color="#34495E"
+            face="Comic Sans MS,arial,verdana"> Bienvenidos a CarePet</font>
+        </h1>
 
-        <div class="row">
+        <div class="row1">
+            <div class="col">
             <img src="${pageContext.request.contextPath}/resources/img/veterinariaI.jpg" alt=""
-                 style="height: 400px;width: 40%; margin: 2%;text-align:center;margin-bottom: 2em; margin-top: 40px;margin-left: 60px"/>
-        </div>
-
-        <div class="row">
-
-            <p:card style="height: 400px;width: 20%; margin: 2%;text-align:center;margin-bottom: 2em; margin-left: 60px">
-
-            </p:card>
-
-            <p:card style="height: 400px;width: 20%; margin: 2%;text-align:center;margin-bottom: 2em">
-
-            </p:card>
-
-            <p:card style="height: 400px;width: 20%; margin: 2%;text-align:center;margin-bottom: 2em">
-
-            </p:card>
-
-            <p:card style="height: 400px;width: 20%; margin: 2%;text-align:center;margin-bottom: 2em">
-
-            </p:card>
+                 style="border-radius: 30px;height: 400px;width: 40%; margin: 2%;text-align:center;margin-bottom: 2em; margin-top: 40px;margin-left: 60px"/>
+            </div>
 
         </div>
+
+        <br></br>
+        <br></br>
+
+        <h1 style="margin-left: 60px;margin-top: 30px"><font color="#34495E"
+            face="Comic Sans MS,arial,verdana"> Servicios disponibles</font>
+        </h1>
+
+        <br></br>
+        <br></br>
+
+        <div class="container-lg">
+
+            <div class="card">
+                <img src="${pageContext.request.contextPath}/resources/img/health.png" alt=""/>
+                <h3><font color="#FDFEFE" face="Comic Sans MS,arial,verdana">Hospitalizaciones</font></h3>
+                <p><font size="2" color="#FDFEFE"
+                         face="tahoma">La veterinaria cuenta con un área de hospitalización especialmente diseñada para dar confort a sus pacientes. Los gatos están separados física y acústicamente de los perros para reducir su estrés.</font>
+                </p>
+
+                <p:button styleClass="btn btn-outline-light btn-ver" href="/index.xhtml" value="Ver más"
+                          style="width: 50%;margin: 10%;margin-left: 70px"/>
+            </div>
+
+            <div class="card">
+                <img src="${pageContext.request.contextPath}/resources/img/pet-house.png" alt=""/>
+                <h3><font color="#FDFEFE" face="Comic Sans MS,arial,verdana">Guarderia</font></h3>
+                <p><font size="2" color="#FDFEFE"
+                         face="tahoma">Nuestro servicio de guardería es muy hogareño, tu mascota podrá socializar con compañeros de su misma y de diferente especie, todos con su  carné  de vacunación al día.                            </font>
+                </p>
+                <br></br>
+                <p:button  styleClass="btn btn-outline-light btn-ver" href="/detalleGuarderia.xhtml" value="Ver más"
+                          style="width: 50%;margin: 10%;margin-left: 70px"/>
+
+            </div>
+
+            <div class="card">
+                <img src="${pageContext.request.contextPath}/resources/img/clinic.png" alt=""/>
+                <h3><font color="#FDFEFE" face="Comic Sans MS,arial,verdana">Veterinaria</font></h3>
+                <p><font size="2" color="#FDFEFE"
+                         face="tahoma">Para nosotros es importante la salud y el bienestar de tu mascota, por ello prestamos un servicio clínico y médico de alta calidad pensando en ti y tu mascota como parte de la familia.            </font>
+                </p>
+                <br></br>
+                <p:button styleClass="btn btn-outline-light btn-ver" href="/index.xhtml" value="Ver más"
+                          style="width: 50%;margin: 10%;margin-left: 70px"/>
+            </div>
+
+            <div class="card">
+                <img src="${pageContext.request.contextPath}/resources/img/pet-food.png" alt=""/>
+                <h3><font color="#FDFEFE" face="Comic Sans MS,arial,verdana">Venta de productos</font></h3>
+                <p><font size="2" color="#FDFEFE"
+                         face="tahoma">Ofrecemos diferentes productos para tu mascota como desinfectantes, juguetes, desparasitantes y productos de aseo.                                                                                  </font>
+                </p>
+                <br></br>
+                <br></br>
+                <br></br>
+                <p:button styleClass="btn btn-outline-light btn-ver" href="/index.xhtml" value="Ver más"
+                          style="width: 50%;margin: 10%;margin-left: 70px"/>
+            </div>
+
+        </div>
+
 
     </ui:define>
 </ui:composition>

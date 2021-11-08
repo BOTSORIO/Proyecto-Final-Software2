@@ -18,9 +18,8 @@
         <div class="row">
 
             <div class="col">
-
-                    <img src="${pageContext.request.contextPath}/resources/img/mascotas.png" alt="" style="margin-left: 20%;height: 70%;width: 70%; margin-top: 15%"/>
-
+                <img src="${pageContext.request.contextPath}/resources/img/mascotas.png" alt=""
+                     style="margin-left: 20%;height: 70%;width: 70%; margin-top: 15%"/>
             </div>
 
             <div class="col">
@@ -28,10 +27,12 @@
                 <h:form id="crear-mascota">
 
                     <p:card styleClass="tarjeta"
-                            style="margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 80%;">
+                            style="border-radius: 15px;margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 80%;">
                         <f:facet name="title">
-                            <font color="#34495E" >¡Regístrese su mascota!</font>
+                            <font color="#34495E" face="Comic Sans MS,arial,verdana">¡Regístrese su mascota!</font>
                         </f:facet>
+
+                        <p><font color="#000000" >¡Hola! en el siguiente formulario puedes indicarnos los datos de tu mascota para poder registrarla y poder disfrutar de todo lo que ofrecemos para ella.</font></p>
 
                         <h:panelGrid columns="2" cellpadding="3" width="100%">
 
@@ -55,7 +56,8 @@
                                          requiredMessage="El nombre de la mascota es obligatorio"/>
 
                             <p:outputLabel for="vacunas_mascota" value="Cantidad vacunas:"/>
-                            <p:inputText id="vacunas_mascota" value="#{mascotaBean.mascota.cantidadVacunas}" style="width: 100%"/>
+                            <p:inputText id="vacunas_mascota" value="#{mascotaBean.mascota.cantidadVacunas}"
+                                         style="width: 100%"/>
 
                             <p:outputLabel for="peso_mascota" value="Peso:"/>
                             <p:inputText id="peso_mascota" value="#{mascotaBean.mascota.peso}" style="width: 100%"/>
@@ -63,12 +65,12 @@
                             <p:outputLabel for="imagenes_lugar" value="Imagenes: "/>
                             <p:fileUpload id="imagenes_lugar" listener="#{mascotaBean.subirImagenes}" mode="advanced"
                                           multiple="true" sizeLimit="1000000" fileLimit="5"
-                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" skinSimple="true" />
+                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" skinSimple="true"/>
 
                         </h:panelGrid>
                         <br></br>
 
-                        <h:panelGrid columns="2" cellpadding="5" width="100%" >
+                        <h:panelGrid columns="2" cellpadding="5" width="100%">
 
                             <p:commandButton action="#{mascotaBean.registrarMascota}" value="Crear" update="@form"
                                              style="background: #2F8DF1;width: 50%; margin-left: 40%;margin-top: 5%"/>

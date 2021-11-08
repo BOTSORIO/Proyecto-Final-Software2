@@ -18,9 +18,8 @@
         <div class="row">
 
             <div class="col">
-                <p:card  style="height: 89%;width: 90%; margin: 10%;text-align:center;margin-bottom: 2em" >
-
-                </p:card>
+                <img src="${pageContext.request.contextPath}/resources/img/producto.png" alt=""
+                     style="border-radius: 25px;margin-left: 20%;height: 70%;width: 70%; margin-top: 15%"/>
             </div>
 
             <div class="col">
@@ -28,15 +27,17 @@
                 <h:form id="crear-producto">
 
                     <p:card styleClass="tarjeta"
-                            style="margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 80%;">
+                            style="border-radius: 15px;margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 80%;">
                         <f:facet name="title">
-                            ¡Regístrese el producto!
+                            <font color="#34495E" face="Comic Sans MS,arial,verdana"> ¡Regístrese el producto!</font>
                         </f:facet>
+
+                        <p><font color="#000000" >¡Hola! en el siguiente formulario puedes ingresar los datos del producto a registrar. </font></p>
 
                         <h:panelGrid columns="2" cellpadding="3" width="100%">
 
                             <p:outputLabel for="categoria_producto" value="Categoria:"/>
-                            <p:selectOneMenu id="categoria_producto" value="#{administradorBean.producto.categoria}"
+                            <p:selectOneMenu id="categoria_producto" value="#{administradorBean.producto.categoria}" style="width: 100%"
                                              converter="#{categoriaConverter}"
                                              required="true"
                                              requiredMessage="La categoria es obligatorio">
@@ -63,14 +64,14 @@
                                           allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" skinSimple="true"/>
 
                         </h:panelGrid>
-
+                        <br></br>
                         <h:panelGrid columns="2" cellpadding="5" width="100%">
 
-                            <p:commandButton action="#{administradorBean.registrarProducto}" value="Crear" update="@form"
-                                             style="width: 50%; margin-left: 30%;margin-top: 5%"/>
+                            <p:commandButton action="#{administradorBean.registrarProducto}" value="Registrar" update="@form"
+                                             style="background: #2F8DF1;width: 120px; margin-left: 40%;margin-top: 5%"/>
 
                             <p:button href="/index.xhtml" value="Volver"
-                                      style="width: 50%; margin-left: 20%;margin-top: 5%"/>
+                                      style="background: #2F8DF1;width: 120px; margin-left: 15%;margin-top: 5%"/>
 
                         </h:panelGrid>
 
