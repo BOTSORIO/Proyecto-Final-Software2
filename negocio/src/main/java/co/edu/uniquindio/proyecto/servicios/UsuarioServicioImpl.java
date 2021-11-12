@@ -175,7 +175,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     @Override
     public Mascota obtenerMascotaUsuario(String nombreMascota, String idUsuario) throws Exception {
 
-        Mascota mascotaEncontrada = obtenerMascotaUsuario(nombreMascota,idUsuario);
+        Mascota mascotaEncontrada = mascotaRepo.obtenerMascotaPorUsuario(nombreMascota,idUsuario);
 
         if (mascotaEncontrada == null){
 
