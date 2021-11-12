@@ -22,6 +22,9 @@ public class InformacionPorDefecto implements CommandLineRunner {
     private TipoServicio tipoServicio;
 
     @Autowired
+    private ServicioServicio servicio;
+
+    @Autowired
     private CategoriaProductoServicio categoriaServicio;
 
     @Override
@@ -56,6 +59,10 @@ public class InformacionPorDefecto implements CommandLineRunner {
             ciudadServicio.registrarCiudad(ciudad9);
             ciudadServicio.registrarCiudad(ciudad10);
             ciudadServicio.registrarCiudad(ciudad11);
+
+            Servicio servicio1 = new Servicio("Guarderia","Guarderia para mascotas",60000,admin1);
+
+            servicio.registrarServicio(servicio1);
 
             TipoMascota tipo1 = new TipoMascota("Perro");
             TipoMascota tipo2 = new TipoMascota("Gato");

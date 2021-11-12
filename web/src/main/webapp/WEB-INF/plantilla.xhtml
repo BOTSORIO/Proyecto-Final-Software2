@@ -24,13 +24,12 @@
 
 </h:head>
 
-<h:body style="background-image: url('../resources/img/fondoC.jpeg');">
-
+<h:body>
     <div id="header">
         <ui:insert name="header">
             <nav class="navbar navbar-expand-lg py-3 navbar-dark " style="background: #2F8DF1 ">
                 <div class="container">
-                    <a class="navbar-brand"  href="/"><i class="fas fa-paw"></i> <font face="Comic Sans MS,arial,verdana">CarePet</font></a>
+                    <a class="navbar-brand"  href="/"><i class="fas fa-paw"></i> <font face="tahoma">CarePet</font></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarColor02"
                             aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +43,7 @@
                                 <a class="nav-link active" aria-current="page" href="/usuario/perfilUsuario.xhtml"
                                    jsf:rendered="#{seguridadBean.autenticado}">
                                     <i class="pi pi-id-card"/>
-                                    Perfil
+                                    <font face="tahoma">Perfil</font>
                                 </a>
                             </li>
 
@@ -53,7 +52,7 @@
                                 <a class="nav-link active" aria-current="page" href="/administrador/perfilAdministrador.xhtml"
                                    jsf:rendered="#{seguridadBean.autenticado}">
                                     <i class="pi pi-id-card"/>
-                                    Perfil
+                                    <font face="tahoma"> Perfil</font>
                                 </a>
                             </li>
 
@@ -61,7 +60,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="pi pi-users"/>
-                                    Usuarios
+                                    <font face="tahoma">Usuarios</font>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/registrarUsuario.xhtml"><i
@@ -82,15 +81,15 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_lugar" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-dog"></i>
-                                    Mascotas
+                                    <font face="tahoma">Mascotas</font>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown_lugar">
                                     <li><a class="dropdown-item" href="/usuario/crearMascota.xhtml"><i
-                                            class="pi pi-plus-circle" style="margin-right: 15px"/>Registrar</a></li>
+                                            class="pi pi-plus-circle" style="margin-right: 15px"/><font face="tahoma">Registrar</font></a></li>
                                     <li><a class="dropdown-item" href="/usuario/eliminarMascota.xhtml"><i
-                                            class="pi pi-minus-circle" style="margin-right: 15px"/>Eliminar</a></li>
+                                            class="pi pi-minus-circle" style="margin-right: 15px"/><font face="tahoma">Eliminar</font></a></li>
                                     <li><a class="dropdown-item" href="/usuario/actualizarMascota.xhtml"><i
-                                            class="pi pi-pencil" style="margin-right: 15px"/>Actualizar</a>
+                                            class="pi pi-pencil" style="margin-right: 15px"/><font face="tahoma">Actualizar</font></a>
                                     </li>
                                 </ul>
                             </li>
@@ -100,19 +99,19 @@
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-user-md"></i>
-                                    Veterinarios
+                                    <font face="tahoma">Veterinarios </font>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown_lugar">
                                     <li><a class="dropdown-item" href="/administrador/registrarTrabajador.xhtml"><i
-                                            class="pi pi-user-plus" style="margin-right: 15px"/>Registrar</a>
+                                            class="pi pi-user-plus" style="margin-right: 15px"/><font face="tahoma">Registrar</font></a>
                                     </li>
                                     <li><a class="dropdown-item"
                                            href="/administrador/eliminarTrabajador.xhtml"><i class="pi pi-user-minus"
-                                                                                            style="margin-right: 15px"/>Eliminar</a>
+                                                                                             style="margin-right: 15px"/><font face="tahoma">Eliminar</font></a>
                                     </li>
                                     <li><a class="dropdown-item"
                                            href="/administrador/actualizarTrabajador.xhtml"><i class="pi pi-user-edit"
-                                                                                              style="margin-right: 15px"/>Actualizar</a>
+                                                                                               style="margin-right: 15px"/><font face="tahoma">Actualizar</font></a>
                                     </li>
                                 </ul>
                             </li>
@@ -122,15 +121,15 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_productos" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-bone"></i>
-                                    Productos
+                                    <font face="tahoma">Productos </font>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown_productos">
                                     <li><a class="dropdown-item" href="/administrador/registrarProducto.xhtml"><i
-                                            class="pi pi-plus-circle" style="margin-right: 15px"/>Registrar</a></li>
+                                            class="pi pi-plus-circle" style="margin-right: 15px"/><font face="tahoma">Registrar</font></a></li>
                                     <li><a class="dropdown-item" href="/administrador/eliminarProducto.xhtml"><i
-                                            class="pi pi-minus-circle" style="margin-right: 15px"/>Eliminar</a></li>
+                                            class="pi pi-minus-circle" style="margin-right: 15px"/><font face="tahoma">Eliminar</font></a></li>
                                     <li><a class="dropdown-item" href="/administrador/actualizarProducto.xhtml"><i
-                                            class="pi pi-pencil" style="margin-right: 15px"/>Actualizar</a>
+                                            class="pi pi-pencil" style="margin-right: 15px"/><font face="tahoma">Actualizar</font></a>
                                     </li>
                                 </ul>
                             </li>
@@ -140,7 +139,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="pi pi-users"/>
-                                    Moderadores
+                                    <font face="tahoma">Moderadores</font>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown_lugar">
                                     <li><a class="dropdown-item" href="/trabajador/principalModerador.xhtml">
@@ -180,12 +179,12 @@
 
                     <div class="row">
                         <div class="col-md-8">
-                            <h5>Correo electronico</h5>
+                            <h5><font face="tahoma">Correo electronico</font></h5>
                             <p:inputText id="username1" value="#{seguridadBean.email}" styleClass="p-d-block"
                                          style="width: 100%"
                                          required="true" requiredMessage="¡Ups! olvidaste el email"/>
 
-                            <h5>Contraseña</h5>
+                            <h5><font face="tahoma">Contraseña</font></h5>
                             <p:password id="nonFeedback" value="#{seguridadBean.password}" style="width: 100%"
                                         required="true" requiredMessage="¡Ups! olvidaste la contraseña"/>
                         </div>
@@ -230,7 +229,6 @@
                         </div>
                     </div>
 
-
                     <f:facet name="footer">
                         <p:commandButton style="min-width: 30%" value="Recuperar contraseña"
                                          action="#{seguridadBean.buscarPorEmail}"
@@ -250,9 +248,17 @@
         </ui:insert>
     </div>
 
+    <br></br>
 
     <div id="footer" class="footer">
         <ui:insert name="footer">
+            <div class="py-4 bg-light" align="center">
+                <div class="justify-content-center">
+                    <div class="col-10">
+                        <span>Universidad del Quindío - Software 2 - 2021</span>
+                    </div>
+                </div>
+            </div>
         </ui:insert>
     </div>
 </h:body>

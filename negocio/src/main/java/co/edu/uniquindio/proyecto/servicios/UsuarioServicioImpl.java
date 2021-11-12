@@ -64,6 +64,22 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
     @Override
+    public void registrarTarjetaUsuario(String idUsuario,String numero, String codigo, String fecha) throws Exception {
+
+        Usuario usuarioEncontrado= obtenerUsuario(idUsuario);
+
+        if (usuarioEncontrado!=null){
+
+            usuarioEncontrado.setNumeroTarjeta(numero);
+            usuarioEncontrado.setCodigoTarjeta(codigo);
+            usuarioEncontrado.setFechatarjeta(fecha);
+            usuarioRepo.save(usuarioEncontrado);
+        }else{
+            throw new Exception("El usuario no existe");
+        }
+    }
+
+    @Override
     public void actualizarUsuario(String email, String password,Usuario u) throws Exception {
 
         Usuario usuarioEncontrado = obtenerUsuarioEmailPassword(email,password);
@@ -116,6 +132,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
             throw new Exception("Usuario no encontrado ");
         }
     }
+
 
     @Override
     public void eliminarUsuarioId(String id) throws Exception {

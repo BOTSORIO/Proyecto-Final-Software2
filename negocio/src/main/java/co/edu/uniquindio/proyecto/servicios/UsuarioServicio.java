@@ -14,6 +14,8 @@ public interface UsuarioServicio {
 
     void eliminarUsuario(String email, String password) throws Exception;
 
+    void registrarTarjetaUsuario(String idUsuario,String numero,String codigo,String fecha)throws Exception;
+
     void eliminarUsuarioId(String id) throws Exception;
 
     Usuario obtenerUsuario(String id) throws Exception;

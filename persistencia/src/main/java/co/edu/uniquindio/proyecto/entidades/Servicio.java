@@ -18,23 +18,24 @@ public class Servicio implements Serializable {
     //================================= ATRIBUTOS CON SU RESPECTIVA PARAMETRIZACION =================================//
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false)
+    @Column(name = "id", nullable = false)
     @EqualsAndHashCode.Include
     private int id;
 
-    @Column(name = "nombre",length = 100,nullable = false)
+    @Column(name = "nombre", length = 100, nullable = false)
     private String nombre;
 
-    @Column(name = "descripcion",length = 200)
+    @Column(name = "descripcion", length = 200)
     private String descripcion;
 
-    @Column(name = "horaInicio",length =100,nullable = false)
-    @NotBlank
+    @Column(name = "horaInicio", length = 100)
     private String horaInicio;
 
-    @Column(name = "horaFin",length =100,nullable = false)
-    @NotBlank
+    @Column(name = "horaFin", length = 100)
     private String horaFin;
+
+    @Column(name = "precio")
+    private double precio;
 
     //================================= RELACION CON LA ENTIDAD ADMINISTRADOR =================================//
     @ManyToOne
@@ -46,6 +47,12 @@ public class Servicio implements Serializable {
     @JsonIgnore
     private List<Mascota> mascotas;
 
+    //================================= RELACION CON LA ENTIDAD COMPRA =================================//
+    @OneToMany(mappedBy = "servicio")
+    @ToString.Exclude
+    @JsonIgnore
+    private List<Compra> compras;
+
     public Servicio(String nombre, String descripcion, String horaInicio, String horaFin, Administrador administrador) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -53,6 +60,16 @@ public class Servicio implements Serializable {
         this.horaFin = horaFin;
         this.administrador = administrador;
         mascotas = new ArrayList<>();
+        compras = new ArrayList<>();
+    }
+
+    public Servicio(String nombre, String descripcion, double precio,Administrador administrador) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.administrador = administrador;
+        mascotas = new ArrayList<>();
+        compras = new ArrayList<>();
     }
 
 

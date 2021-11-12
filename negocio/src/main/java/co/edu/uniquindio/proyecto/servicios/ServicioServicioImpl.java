@@ -10,9 +10,13 @@ import java.util.Optional;
 public class ServicioServicioImpl implements ServicioServicio{
 
     private final ServicioRepo servicioRepo;
+    private final UsuarioRepo usuarioRepo;
+    private final CompraRepo compraRepo;
 
-    public ServicioServicioImpl(ServicioRepo servicioRepo) {
+    public ServicioServicioImpl(ServicioRepo servicioRepo, UsuarioRepo usuarioRepo, CompraRepo compraRepo) {
         this.servicioRepo = servicioRepo;
+        this.usuarioRepo = usuarioRepo;
+        this.compraRepo = compraRepo;
     }
 
     @Override
@@ -24,14 +28,6 @@ public class ServicioServicioImpl implements ServicioServicio{
 
         if (s.getDescripcion().length()>200){
             throw new Exception("No se puede exceder los 200 caracteres");
-        }
-
-        if(s.getHoraInicio().length() > 100){
-            throw new Exception("No se puede exceder los 100 caracteres");
-        }
-
-        if(s.getHoraFin().length() > 100){
-            throw new Exception("No se puede exceder los 100 caracteres");
         }
 
         return servicioRepo.save(s);
@@ -76,6 +72,32 @@ public class ServicioServicioImpl implements ServicioServicio{
         }
         return servicioEncontrado.get();
     }
+
+    @Override
+    public Servicio obtenerServicioNombre(String nombre) throws Exception {
+
+        Servicio servicioEncontrado = servicioRepo.obtenerServicioNombre(nombre);
+
+        if (servicioEncontrado==null){
+
+            throw new Exception("No existe un servicio con el nombre ingresado");
+        }
+        return servicioEncontrado;
+    }
+
+    @Override
+    public void adquirirServicioGuarderia(Servicio servicio,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception {
+
+        Compra compra = new Compra();
+        Usuario usuario = usuarioRepo.obtenerUsuarioCompra(nombreUsuario,cedulaUsuario,numeroTarjeta);
+
+        if(servicio != null && usuario!=null){
+            compra.setServicio(servicio);
+            compra.setUsuario(usuario);
+            compraRepo.save(compra);
+        }
+    }
+
 
     @Override
     public List<Servicio> listarServicios() {

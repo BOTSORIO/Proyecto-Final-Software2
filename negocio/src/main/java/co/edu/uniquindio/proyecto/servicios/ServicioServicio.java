@@ -14,6 +14,10 @@ public interface ServicioServicio {
 
     Servicio obtenerServicio(int id) throws Exception;
 
+    Servicio obtenerServicioNombre(String nombre) throws Exception;
+
+    void adquirirServicioGuarderia(Servicio servicio,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception;
+
     List<Servicio> listarServicios();
 
 

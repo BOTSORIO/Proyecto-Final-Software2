@@ -1,5 +1,3 @@
-
-
 #header .btn-buscar {
     color: #f8f9fa;
     border-color: #f8f9fa;
@@ -44,7 +42,7 @@
     margin: 20px;
     text-align: center;
     transition: all 0.25s;
-    background: #6501FF;
+    background: #2F8DF1;
 }
 
 .container-lg .card:hover{
@@ -73,31 +71,21 @@
 
 .container-lg .card h3{
     font-weight: 400;
-    background: #6501FF;
+    background: #2F8DF1;
 }
 
 .container-lg .card p{
     padding: 0 1rem;
     font-size: 16px;
     font-weight: 300;
-    background: #6501FF;
+    background: #2F8DF1;
 }
 
 .container-lg .card a {
     font-weight: 500;
     text-decoration: none;
-    color: #6501FF;
-    background: #6501FF;
-}
-
-.row1 img{
-    width: 400px;
-    height: 400px;
-    display:block;
-    border-radius: 30px;
-    margin-bottom: 2em;
-    margin-top: 40px;
-    margin-left: 60px;
+    color: #2F8DF1;
+    background: #2F8DF1;
 }
 
 

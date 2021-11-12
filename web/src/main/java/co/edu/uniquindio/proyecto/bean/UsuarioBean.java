@@ -72,6 +72,21 @@ public class UsuarioBean implements Serializable {
         }
     }
 
+    public void registrarTarjetaUsuario(){
+
+        try {
+
+            usuarioServicio.registrarTarjetaUsuario(personaLogin.getId(),usuario.getNumeroTarjeta(),usuario.getCodigoTarjeta(),usuario.getFechatarjeta());
+            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! tu tarjeta se ha registrado con exito");
+            FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
+
+        }catch (Exception e){
+
+            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
+        }
+    }
+
 
     public String eliminarUsuario(){
 

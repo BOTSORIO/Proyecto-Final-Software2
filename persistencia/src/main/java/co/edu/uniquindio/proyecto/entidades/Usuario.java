@@ -7,6 +7,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,16 @@ import java.util.List;
 @Setter
 @ToString
 public class Usuario extends Persona implements Serializable {
+
+    @Column(name = "numero_tarjeta",length = 100)
+    private String numeroTarjeta;
+
+    @Column(name = "fecha_tarjeta",length = 100)
+    private String fechatarjeta;
+
+    @Column(name = "codigo_tarjeta",length = 100)
+    private String codigoTarjeta;
+
 
     //================================= RELACION CON LA ENTIDAD CIUDAD =================================//
     @ManyToOne
@@ -29,11 +41,18 @@ public class Usuario extends Persona implements Serializable {
     @JsonIgnore
     private List<Mascota> mascotas;
 
+    //================================= RELACION CON LA ENTIDAD COMPRA =================================//
+
+    @OneToMany(mappedBy = "usuario")
+    @ToString.Exclude
+    @JsonIgnore
+    private List<Compra> compras;
 
     //================================= CONSTRUCTOR  =================================//
     public Usuario(String id, String nombre, String nickname, String password, String email) {
         super(id, nombre, nickname, password, email);
         mascotas= new ArrayList<>();
+        compras= new ArrayList<>();
     }
 
 }
