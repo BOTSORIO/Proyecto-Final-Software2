@@ -16,7 +16,7 @@ public interface ServicioServicio {
 
     Servicio obtenerServicioNombre(String nombre) throws Exception;
 
-    void adquirirServicioGuarderia(Servicio servicio,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception;
+    void adquirirServicioGuarderia(Servicio servicio,String nombreMascota,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception;
 
     List<Servicio> listarServicios();
 

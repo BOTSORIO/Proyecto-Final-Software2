@@ -28,7 +28,6 @@ public class Persona implements Serializable {
     private String id;
 
     @Column(name = "nombre",length = 100,nullable = false)
-    @NotBlank
     @Size(max = 100,message = "El valor ingresado excede los 100 caracteres")
     private String nombre;
 

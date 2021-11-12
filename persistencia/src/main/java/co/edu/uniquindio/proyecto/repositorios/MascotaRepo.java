@@ -30,6 +30,9 @@ public interface MascotaRepo extends JpaRepository<Mascota,Integer>{
     @Query("select i from Mascota m join m.imagenes i where m.id = :idMascota")
     List<Imagen> obtenerImagenes(int idMascota);
 
+    @Query("select m from Mascota m where m.usuario.id =:idUsuario and m.nombre =:nombreMascota")
+    Mascota obtenerMascotaPorUsuario(String nombreMascota,String idUsuario);
+
     @Query("select m from Mascota m where m.usuario.id= :idUsuario")
     List<Mascota> obtenerMascotasPorUsuario(String idUsuario);
 

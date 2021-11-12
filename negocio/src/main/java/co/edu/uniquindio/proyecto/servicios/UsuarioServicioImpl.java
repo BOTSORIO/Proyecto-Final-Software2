@@ -172,9 +172,21 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         return usuario;
     }
 
+    @Override
+    public Mascota obtenerMascotaUsuario(String nombreMascota, String idUsuario) throws Exception {
+
+        Mascota mascotaEncontrada = obtenerMascotaUsuario(nombreMascota,idUsuario);
+
+        if (mascotaEncontrada == null){
+
+            throw new Exception("El usuario no tiene mascota alguna registrado con el nombre dado");
+        }
+
+        return mascotaEncontrada;
+    }
 
     @Override
-    public List<Mascota> obtenerMascotasPorUsuario(String idUsuario){
+    public List<Mascota> obtenerMascotasPorUsuario(String idUsuario) throws Exception {
 
         List<Mascota> mascotasU = mascotaRepo.obtenerMascotasPorUsuario(idUsuario);
 

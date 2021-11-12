@@ -22,7 +22,9 @@ public interface UsuarioServicio {
 
     Usuario obtenerUsuarioEmailPassword(String email, String password) throws Exception;
 
-    List<Mascota> obtenerMascotasPorUsuario(String idUsuario);
+    Mascota obtenerMascotaUsuario(String nombreMascota,String idUsuario) throws Exception;
+
+    List<Mascota> obtenerMascotasPorUsuario(String idUsuario) throws Exception;
 
     List<Usuario> listarUsuarios();
 

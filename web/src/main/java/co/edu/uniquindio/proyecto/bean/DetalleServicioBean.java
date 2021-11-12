@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.bean;
 
+import co.edu.uniquindio.proyecto.entidades.Mascota;
 import co.edu.uniquindio.proyecto.entidades.Persona;
 import co.edu.uniquindio.proyecto.entidades.Servicio;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
@@ -38,6 +39,9 @@ public class DetalleServicioBean implements Serializable {
     private Servicio guarderia;
 
     @Getter @Setter
+    private Mascota mascota;
+
+    @Getter @Setter
     private Usuario usuario;
 
     @Value(value = "#{seguridadBean.persona}")
@@ -50,6 +54,7 @@ public class DetalleServicioBean implements Serializable {
         try {
             this.guarderia = servicio.obtenerServicioNombre("Guarderia");
             this.usuario = new Usuario();
+            this.mascota = new Mascota();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,15 +64,19 @@ public class DetalleServicioBean implements Serializable {
     public void adquirirServicioGuarderia() {
 
         Servicio servicioEncontrado;
+        Mascota mascotaUsuario;
 
         if(personaLogin!= null){
 
             try {
 
                 usuario = usuarioServicio.obtenerUsuario(personaLogin.getId());
+                mascotaUsuario = usuarioServicio.obtenerMascotaUsuario(mascota.getNombre(),usuario.getId());
 
                 servicioEncontrado = servicio.obtenerServicioNombre("Guarderia");
-                servicio.adquirirServicioGuarderia(servicioEncontrado,usuario.getNombre(),usuario.getId(),usuario.getNumeroTarjeta());
+                servicioEncontrado.getMascotas().add(mascotaUsuario);
+                servicio.adquirirServicioGuarderia(servicioEncontrado,mascotaUsuario.getNombre(),usuario.getNombre(),usuario.getId(),usuario.getNumeroTarjeta());
+
                 FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! has adquirido el servicio");
                 FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
 

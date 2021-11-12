@@ -86,7 +86,7 @@ public class ServicioServicioImpl implements ServicioServicio{
     }
 
     @Override
-    public void adquirirServicioGuarderia(Servicio servicio,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception {
+    public void adquirirServicioGuarderia(Servicio servicio,String nombreMascota,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception {
 
         Compra compra = new Compra();
         Usuario usuario = usuarioRepo.obtenerUsuarioCompra(nombreUsuario,cedulaUsuario,numeroTarjeta);
