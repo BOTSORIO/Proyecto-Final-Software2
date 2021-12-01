@@ -26,6 +26,18 @@ public interface UsuarioServicio {
 
     List<Mascota> obtenerMascotasPorUsuario(String idUsuario) throws Exception;
 
+    Compra obtenerCompra(int id) throws Exception;
+
+    List<Compra> obtenerHistorialServicios(String cedulaU);
+
+    List<Compra> obtenerServiciosActivos(String cedulaU);
+
+    List<CompraProducto> obtenerProductosUsuario(String cedulaU);
+
+    void cancelarServicio(int idCompra,int idServicio,String cedula) throws Exception;
+
+    void adquirirProducto(Producto producto,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception;
+
     List<Usuario> listarUsuarios();
 
 }

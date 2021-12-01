@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.entidades;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.*;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Compra implements Serializable {
+public class CompraProducto implements Serializable {
 
     //================================= ATRIBUTOS CON SU RESPECTIVA PARAMETRIZACION =================================//
     @Id
@@ -21,31 +22,16 @@ public class Compra implements Serializable {
     private int id;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "horaInicio", length = 100)
-    private Date horaInicio;
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "horaFin", length = 100)
-    private Date horaFin;
-
-    @Column(name = "estado")
-    private Boolean estado;
-
-    //================================= RELACION CON LA ENTIDAD SERVICIO=================================//
-    @ManyToOne
-    @ToString.Exclude
-    private Servicio servicio;
+    @Column(name = "horaCompra", length = 100)
+    private Date horaCompra;
 
     //================================= RELACION CON LA ENTIDAD USUARIO =================================//
     @ManyToOne
     @ToString.Exclude
     private Usuario usuario;
 
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
+    //================================= RELACION CON LA ENTIDAD PRODUCTO =================================//
+    @ManyToOne
+    @ToString.Exclude
+    private Producto producto;
 }

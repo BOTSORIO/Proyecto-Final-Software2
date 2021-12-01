@@ -13,20 +13,20 @@
 <ui:composition template="/WEB-INF/plantilla.xhtml">
 
 
-    <ui:define name="title">Veterinaria | Detalle</ui:define>
+    <ui:define name="title">Hospitalizaciones | Detalle</ui:define>
     <ui:define name="content">
 
 
         <div class="row">
         <div style="width: 60%" class="col">
-            <img src="${pageContext.request.contextPath}/resources/img/Guarderia.jpg" alt=""
+            <img src="${pageContext.request.contextPath}/resources/img/hospital.jpg" alt=""
                  style="height: 400px;width: 630px; margin: 2%;text-align:center;margin-bottom: 2em; margin-top: 40px;margin-left: 60px"/>
 
             <p:card style="background: #2F8DF1;width: 630px;height: 270px; margin-left: 60px">
-            <f:facet name="title">
-                <h2> <font color="#FFFFFF"
-                           face="tahoma"> Descripción </font></h2>
-            </f:facet>
+                <f:facet name="title">
+                    <h2> <font color="#FFFFFF"
+                               face="tahoma"> Descripción </font></h2>
+                </f:facet>
 
                 <h5 align="justify">
                     <font color="#FFFFFF"
@@ -44,43 +44,41 @@
         </div>
 
 
-            <div class="col" style="margin-left: 70px;width: 200px;height: 692px;margin-top: 20px">
+            <div class="col" style="margin-top: 20px;margin-left: 70px;width: 200px;height: 692px">
                 <br></br>
 
                 <p:card style="width: 32rem; margin-bottom: 2em;height: 692px">
-                    <f:facet name="title">
+                    <f:facet name="title" >
                         <h1 style="text-align: center;"> <font color="#2F8DF1"
-                                   face="tahoma">Veterinaria                                            CarePet</font> </h1>
+                            face="tahoma">Hospitalizaciones CarePet</font> </h1>
 
                     </f:facet>
 
                     <h5 align="justify" style="margin-left: 2%;margin-right: 2%">
                         <font color="#000000"
-                              face="tahoma">Nuestro servicio de guardería es muy hogareño, tu mascota podrá socializar con compañeros de su misma y de diferente especie, todos con su  carné  de vacunación al día. </font>
+                              face="tahoma"> Nuestro servicio de hospitalización es de los mejores, tú y tu mascota podran estar seguros de que haremos hasta lo imposible para que mejore de cualquier dolecia que presente.</font>
                     </h5>
 
                     <br></br>
 
                     <h5 style="margin-left: 2%;margin-right: 2%"> <font color="#000000"
-                               face="tahoma"><b>Costo por día:</b> #{detalleServicioBean.guarderia.precio} </font>
+                               face="tahoma"> <b>Precio por consulta:</b> #{detalleServicioBean.hospital.precio} </font>
+                    </h5>
+                    <br></br>
+                    <h5 style="margin-left: 2%;margin-right: 2%"> <font color="#000000"
+                               face="tahoma"> El costo prodra incrementar dependiendo de las complicaciones de tu mascota</font>
                     </h5>
 
                     <br></br>
 
                     <h5 style="margin-left: 2%;margin-right: 2%"> <font color="#000000"
-                               face="tahoma"><b> Tefelono de contacto:</b> 3226346138 </font>
+                               face="tahoma"> <b>Tefelono de contacto:</b> 3226346138 </font>
                     </h5>
-
-                    <br></br>
-                    <br></br>
                     <br></br>
                     <div align="center">
-                        <img src="resources/img/pet-house.png" alt="" style="width: 100px;height: 100px"/>
+                        <img src="resources/img/health.png" alt="" style="width: 100px;height: 100px"/>
                     </div>
-
-
                     <h:panelGrid rendered="#{seguridadBean.autenticado}" style="display: block;text-align: center">
-                        <br></br>
                         <br></br>
                         <div class="row" align="center" style="margin-top: 2%; margin-bottom: 2%" >
                             <div class="col">
@@ -128,7 +126,7 @@
 
 
                 <f:facet name="footer">
-                    <p:commandButton style="min-width: 30%" value="Adquirir" action="#{detalleServicioBean.adquirirServicioGuarderia}"
+                    <p:commandButton style="min-width: 30%" value="Adquirir" action="#{detalleServicioBean.adquirirServicioHospital}"
                                      styleClass="ui-button-raised ui-button-success ui-button-flat"
                                      update="@form" />
 
@@ -161,7 +159,7 @@
 
                     <div class="col-2">
                         <div class="fotox">
-                            <img src="resources/img/tarjeta-de-credito%20(1).png" alt="" />
+                            <img src="resources/img/tarjeta-de-credito%20(1).png" alt="" style="margin-top: 75px"/>
                         </div>
                     </div>
                 </div>

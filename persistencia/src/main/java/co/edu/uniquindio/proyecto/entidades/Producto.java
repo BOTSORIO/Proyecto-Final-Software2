@@ -24,11 +24,17 @@ public class Producto implements Serializable {
     @Column(name = "nombre",length = 100,nullable = false)
     private String nombre;
 
-    @Column(name = "descripcion",length = 200)
+    @Column(name = "descripcion",length = 500)
     private String descripcion;
 
     @Column(name = "precio")
     private double precio;
+
+    //================================= RELACION CON LA ENTIDAD COMPRA =================================//
+    @OneToMany(mappedBy = "producto")
+    @ToString.Exclude
+    @JsonIgnore
+    private List<CompraProducto> comprasProducto;
 
     //================================= RELACION CON LA ENTIDAD ADMINISTRADOR =================================//
     @ManyToOne
@@ -50,5 +56,15 @@ public class Producto implements Serializable {
         this.precio = precio;
         this.administrador = administrador;
         this.categoria = categoria;
+    }
+
+    public String getImagenPrincipal(){
+
+        if(imagenes!=null && !imagenes.isEmpty()){
+
+            return imagenes.get(0).getUrl();
+        }
+
+        return "default.png";
     }
 }

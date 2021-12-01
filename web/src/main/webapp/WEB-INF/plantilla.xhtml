@@ -47,15 +47,6 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item"
-                                jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol=='admin'}">
-                                <a class="nav-link active" aria-current="page" href="/administrador/perfilAdministrador.xhtml"
-                                   jsf:rendered="#{seguridadBean.autenticado}">
-                                    <i class="pi pi-id-card"/>
-                                    <font face="tahoma"> Perfil</font>
-                                </a>
-                            </li>
-
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
@@ -134,33 +125,8 @@
                                 </ul>
                             </li>
 
-                            <li class="nav-item dropdown"
-                                jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol=='trabajador'}">
-                                <a class="nav-link dropdown-toggle" href="#" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="pi pi-users"/>
-                                    <font face="tahoma">Moderadores</font>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown_lugar">
-                                    <li><a class="dropdown-item" href="/trabajador/principalModerador.xhtml">
-                                    <i class="pi pi-check-square" style="margin-right: 15px"/>
-                                          Autorizar o denegar lugares</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="/trabajador/perfilModerador.xhtml"><i
-                                            class="pi pi-id-card"
-                                            style="margin-right: 15px"/>Perfil</a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                         <div class="d-flex">
-                            <h:form class="d-flex me-2">
-                                <p:inputText styleClass="form-control me-2 input-search"
-                                             placeholder="¿Qué está buscando?"
-                                             value="#{busquedaBean.busqueda}"/>
-                                <p:commandButton styleClass="btn btn-outline-light btn-buscar" value="Buscar"
-                                                 action="#{busquedaBean.buscar}"/>
-                            </h:form>
                             <p:commandButton styleClass="ui-button-raised ui-button-secondary" value="Login"
                                              onclick="PF('dlg1').show()" icon="pi pi-sign-in" iconPos="left"
                                              rendered="#{!seguridadBean.autenticado}" style="background: #34495E"/>
@@ -183,7 +149,8 @@
                             <p:inputText id="username1" value="#{seguridadBean.email}" styleClass="p-d-block"
                                          style="width: 100%"
                                          required="true" requiredMessage="¡Ups! olvidaste el email"/>
-
+                            <br></br>
+                            <br></br>
                             <h5><font face="tahoma">Contraseña</font></h5>
                             <p:password id="nonFeedback" value="#{seguridadBean.password}" style="width: 100%"
                                         required="true" requiredMessage="¡Ups! olvidaste la contraseña"/>
@@ -191,7 +158,7 @@
 
                         <div class="col-2">
                             <div class="fotox">
-                                <img src="resources/img/user.png" alt=""/>
+                                <img src="resources/img/user.png" alt="" style="margin-top: 50%"/>
                             </div>
                         </div>
                     </div>

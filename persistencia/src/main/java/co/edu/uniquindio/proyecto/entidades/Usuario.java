@@ -48,6 +48,12 @@ public class Usuario extends Persona implements Serializable {
     @JsonIgnore
     private List<Compra> compras;
 
+    //================================= RELACION CON LA ENTIDAD COMPRA =================================//
+    @OneToMany(mappedBy = "producto")
+    @ToString.Exclude
+    @JsonIgnore
+    private List<CompraProducto> comprasProductos;
+
     //================================= CONSTRUCTOR  =================================//
     public Usuario(String id, String nombre, String nickname, String password, String email) {
         super(id, nombre, nickname, password, email);

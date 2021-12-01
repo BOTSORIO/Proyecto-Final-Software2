@@ -34,24 +34,18 @@
 
                     <p:outputLabel for="categoria_producto" value="Categoria:"/>
                     <p:selectOneMenu id="categoria_producto" value="#{administradorBean.producto.categoria}"
-                                     converter="#{categoriaConverter}"
-                                     required="true" style="width: 100%"
-                                     requiredMessage="La categoria es obligatorio">
+                                     converter="#{categoriaConverter}">
                         <f:selectItem itemLabel="Seleccione una categoria" noSelectionOption="true"/>
                         <f:selectItems var="categoria" itemLabel="#{categoria.nombre}"
                                        value="#{administradorBean.categorias}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel for="nombre_producto" value="Nombre:"/>
-                    <p:inputText id="nombre_producto" value="#{administradorBean.producto.nombre}" style="width: 100%"
-                                 required="true"
-                                 requiredMessage="El nombre de la mascota es obligatorio"/>
+                    <p:inputText id="nombre_producto" value="#{administradorBean.producto.nombre}" style="width: 100%"/>
 
                     <p:outputLabel for="descripcion_producto" value="Descripción:"/>
                     <p:inputTextarea id="descripcion_producto" value="#{administradorBean.producto.descripcion}"
-                                     style="width: 100%"
-                                     required="true"
-                                     requiredMessage="La descripcion es obligatorio"/>
+                                     style="width: 100%"/>
 
                     <p:outputLabel for="precio_producto" value="Precio:"/>
                     <p:inputText id="precio_producto" value="#{administradorBean.producto.precio}" style="width: 100%"/>
@@ -59,7 +53,7 @@
                     <p:outputLabel for="imagenes_producto" value="Imagenes: "/>
                     <p:fileUpload id="imagenes_producto" listener="#{administradorBean.subirImagenes}" mode="advanced"
                                   multiple="true" sizeLimit="1000000" fileLimit="5"
-                                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" skinSimple="true"/>
+                                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" skinSimple="true"/>
                 </h:panelGrid>
                 <br></br>
                 <h:panelGrid columns="2" cellpadding="5" width="100%">

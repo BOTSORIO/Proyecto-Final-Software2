@@ -18,8 +18,8 @@
         <div class="row">
 
             <div class="col">
-                <img src="${pageContext.request.contextPath}/resources/img/producto.png" alt=""
-                     style="border-radius: 25px;margin-left: 20%;height: 70%;width: 70%; margin-top: 15%"/>
+                <img src="${pageContext.request.contextPath}/resources/img/productos.jpeg" alt=""
+                     style="border-radius: 25px;margin-left: 15%;height: 60%;width: 80%; margin-top: 15%"/>
             </div>
 
             <div class="col">
@@ -52,7 +52,7 @@
 
                             <p:outputLabel for="descripcion_producto" value="Descripción:"/>
                             <p:inputTextarea id="descripcion_producto" value="#{administradorBean.producto.descripcion}" style="width: 100%"
-                                         required="true"
+                                         required="true" autoResize="none"
                                          requiredMessage="La descripcion es obligatorio"/>
 
                             <p:outputLabel for="precio_producto" value="Precio:"/>

@@ -18,6 +18,10 @@ public interface ServicioServicio {
 
     void adquirirServicioGuarderia(Servicio servicio,String nombreMascota,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception;
 
+    void adquirirServicioHospital(Servicio servicio,String nombreMascota,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception;
+
+    void adquirirServicioVet(Servicio servicio,String nombreMascota,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception;
+
     List<Servicio> listarServicios();
 
 

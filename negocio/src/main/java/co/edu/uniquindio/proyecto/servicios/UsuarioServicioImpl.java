@@ -10,10 +10,19 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
     private final UsuarioRepo usuarioRepo;
     private final MascotaRepo mascotaRepo;
+    private final CompraProductoRepo compraProductoRepo;
+    private final ServicioServicio servicioServicio;
+    private final CompraRepo compraRepo;
+    private final ProductoRepo productoRepo;
 
-    public UsuarioServicioImpl(UsuarioRepo usuarioRepo, MascotaRepo mascotaRepo) {
+
+    public UsuarioServicioImpl(UsuarioRepo usuarioRepo, MascotaRepo mascotaRepo, CompraProductoRepo compraProductoRepo, ServicioServicio servicioServicio, CompraRepo compraRepo, ProductoRepo productoRepo) {
         this.usuarioRepo = usuarioRepo;
         this.mascotaRepo = mascotaRepo;
+        this.compraProductoRepo = compraProductoRepo;
+        this.servicioServicio = servicioServicio;
+        this.compraRepo = compraRepo;
+        this.productoRepo = productoRepo;
     }
 
 
@@ -191,6 +200,81 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         List<Mascota> mascotasU = mascotaRepo.obtenerMascotasPorUsuario(idUsuario);
 
         return mascotasU;
+    }
+
+    @Override
+    public List<Compra> obtenerHistorialServicios(String cedulaU){
+
+        List<Compra> historialServicio = compraRepo.obtenerhistorialServiciosUsuario(cedulaU);
+
+        return historialServicio;
+    }
+
+    @Override
+    public List<Compra> obtenerServiciosActivos(String cedulaU)  {
+
+        List<Compra> serviciosActivos = compraRepo.obtenerServiciosActivosUsuario(cedulaU);
+
+        return serviciosActivos;
+    }
+
+    @Override
+    public List<CompraProducto> obtenerProductosUsuario(String cedulaU)  {
+
+        List<CompraProducto> productosU = compraProductoRepo.obtenerhistorialCompraUsuario(cedulaU);
+
+        return productosU;
+    }
+
+    @Override
+    public void adquirirProducto(Producto producto,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception {
+
+        CompraProducto compraProducto = new CompraProducto();
+        Usuario usuario = usuarioRepo.obtenerUsuarioCompra(nombreUsuario,cedulaUsuario,numeroTarjeta);
+
+        if(producto != null && usuario!=null){
+            compraProducto.setProducto(producto);
+            compraProducto.setUsuario(usuario);
+            compraProducto.setHoraCompra(new Date());
+            compraProductoRepo.save(compraProducto);
+            producto.getComprasProducto().add(compraProducto);
+            productoRepo.save(producto);
+        }
+    }
+
+    @Override
+    public void cancelarServicio(int idCompra,int idServicio,String cedula) throws Exception{
+
+        Usuario usuario = usuarioRepo.obtenerUsuarioCedula(cedula);
+        Servicio servicio = servicioServicio.obtenerServicio(idServicio);
+        Date devolucion = new Date();
+
+        Compra compra = compraRepo.obtenerServicioUsuario(servicio.getId(),usuario.getId());
+
+        if (compra !=null && compra.getEstado()){
+
+            compra.setEstado(false);
+            compra.setHoraFin(devolucion);
+            compraRepo.save(compra);
+            usuario.getCompras().remove(compra);
+            usuarioRepo.save(usuario);
+
+        }else{
+            throw new Exception("No tienes compras activas");
+        }
+    }
+
+    @Override
+    public Compra obtenerCompra(int id) throws Exception {
+
+        Optional<Compra> compra = compraRepo.findById(id);
+
+        if (compra.isEmpty()){
+
+            throw new Exception("No se encontro la compra");
+        }
+
+        return compra.get();
     }
 
     @Override

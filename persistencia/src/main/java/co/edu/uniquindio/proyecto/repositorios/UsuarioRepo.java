@@ -33,6 +33,9 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
 
     Usuario findByEmail(String email);
 
+    @Query("select u from Usuario u where u.id =:cedula")
+    Usuario obtenerUsuarioCedula(String cedula);
+
     List<Usuario> findByNombre(String nombre);
 
 

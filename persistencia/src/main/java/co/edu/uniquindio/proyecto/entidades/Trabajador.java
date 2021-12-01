@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,9 +26,17 @@ public class Trabajador extends Persona implements Serializable {
     private List<Mascota> mascotas;
 
 
+    //================================= RELACION CON LA ENTIDAD SERVICIO =================================//
+    @OneToMany(mappedBy = "trabajador")
+    @ToString.Exclude
+    private List<Servicio> servicios;
+
+
     //================================= CONSTRUCTOR  =================================//
     public Trabajador(String id, String nombre, String nickname, String password, String email) {
         super(id, nombre, nickname, password, email);
+        this.mascotas = new ArrayList<>();
+        this.servicios= new ArrayList<>();
 
     }
 

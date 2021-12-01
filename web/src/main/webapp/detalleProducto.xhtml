@@ -13,20 +13,22 @@
 <ui:composition template="/WEB-INF/plantilla.xhtml">
 
 
-    <ui:define name="title">Veterinaria | Detalle</ui:define>
+    <ui:define name="title">Hospitalizaciones | Detalle</ui:define>
     <ui:define name="content">
 
 
         <div class="row">
         <div style="width: 60%" class="col">
-            <img src="${pageContext.request.contextPath}/resources/img/Guarderia.jpg" alt=""
-                 style="height: 400px;width: 630px; margin: 2%;text-align:center;margin-bottom: 2em; margin-top: 40px;margin-left: 60px"/>
+            <p:galleria value="#{detalleProductoBean.urlImagenes}" var="image" panelWidth="630" panelHeight="400"
+                        showCaption="true"  style="height: 400px;width: 630px; margin: 2%;text-align:center;margin-bottom: 2em; margin-top: 40px;margin-left: 40px">
+                <p:graphicImage url="/uploads/#{image}" title="Imagenes"  style="width: 500px;height: 400px"/>
+            </p:galleria>
 
             <p:card style="background: #2F8DF1;width: 630px;height: 270px; margin-left: 60px">
-            <f:facet name="title">
-                <h2> <font color="#FFFFFF"
-                           face="tahoma"> Descripción </font></h2>
-            </f:facet>
+                <f:facet name="title">
+                    <h2> <font color="#FFFFFF"
+                               face="tahoma"> Descripción </font></h2>
+                </f:facet>
 
                 <h5 align="justify">
                     <font color="#FFFFFF"
@@ -37,55 +39,49 @@
                 <h5 align="justify">
                     <font color="#FFFFFF"
                           face="tahoma">
-                        ¡Recuerda!, para adquirir este servicio debes haber ingresado al sistema con anterioridad.
+                        ¡Recuerda!, para adquirir este producto debes haber ingresado al sistema con anterioridad.
                     </font>
                 </h5>
             </p:card>
         </div>
 
 
-            <div class="col" style="margin-left: 70px;width: 200px;height: 692px;margin-top: 20px">
+            <div class="col" style="margin-top: 20px;margin-left: 70px;width: 200px;height: 692px">
                 <br></br>
 
                 <p:card style="width: 32rem; margin-bottom: 2em;height: 692px">
-                    <f:facet name="title">
+                    <f:facet name="title" >
                         <h1 style="text-align: center;"> <font color="#2F8DF1"
-                                   face="tahoma">Veterinaria                                            CarePet</font> </h1>
+                            face="tahoma">#{detalleProductoBean.producto.nombre}</font> </h1>
 
                     </f:facet>
 
                     <h5 align="justify" style="margin-left: 2%;margin-right: 2%">
                         <font color="#000000"
-                              face="tahoma">Nuestro servicio de guardería es muy hogareño, tu mascota podrá socializar con compañeros de su misma y de diferente especie, todos con su  carné  de vacunación al día. </font>
+                              face="tahoma"> #{detalleProductoBean.producto.descripcion}</font>
                     </h5>
 
                     <br></br>
 
                     <h5 style="margin-left: 2%;margin-right: 2%"> <font color="#000000"
-                               face="tahoma"><b>Costo por día:</b> #{detalleServicioBean.guarderia.precio} </font>
+                               face="tahoma"> <b>Precio:</b> #{detalleProductoBean.producto.precio} </font>
                     </h5>
-
                     <br></br>
 
                     <h5 style="margin-left: 2%;margin-right: 2%"> <font color="#000000"
-                               face="tahoma"><b> Tefelono de contacto:</b> 3226346138 </font>
+                               face="tahoma"> <b>Categoria:</b> #{detalleProductoBean.producto.categoria.nombre} </font>
                     </h5>
+                    <br></br>
 
-                    <br></br>
-                    <br></br>
-                    <br></br>
                     <div align="center">
-                        <img src="resources/img/pet-house.png" alt="" style="width: 100px;height: 100px"/>
+                        <img src="resources/img/pet-food.png" alt="" style="width: 100px;height: 100px"/>
                     </div>
-
-
-                    <h:panelGrid rendered="#{seguridadBean.autenticado}" style="display: block;text-align: center">
-                        <br></br>
+                    <h:panelGrid rendered="#{seguridadBean.autenticado}" style="margin-top: 5px;display: block;text-align: center">
                         <br></br>
                         <div class="row" align="center" style="margin-top: 2%; margin-bottom: 2%" >
                             <div class="col">
                                 <p>Para adquirir este servicio por favor presiona el botón y completa los datos solicitados </p>
-                                <p:commandButton rendered="#{seguridadBean.autenticado}" styleClass="ui-button-raised ui-button" value="Adquirir"
+                                <p:commandButton rendered="#{seguridadBean.autenticado}" styleClass="ui-button-raised ui-button" value="Comprar"
                                                  onclick="PF('dlg1').show()"
                                                  style="background: #2F8DF1 "/>
 
@@ -102,19 +98,19 @@
                 <div class="row">
                     <div class="col-md-8">
                         <p:outputLabel for="nombre_usuario" value="Nombre:"/>
-                        <p:inputText id="nombre_usuario" value="#{detalleServicioBean.usuario.nombre}" styleClass="p-d-block"
+                        <p:inputText id="nombre_usuario" value="#{detalleProductoBean.usuario.nombre}" styleClass="p-d-block"
                                      style="width: 100%"/>
 
-                        <p:outputLabel for="nombre_mascota" value="Nombre de tu mascota:"/>
-                        <p:inputText id="nombre_mascota" value="#{detalleServicioBean.mascota.nombre}" styleClass="p-d-block"
+                        <p:outputLabel for="nombre_producto" value="Nombre del producto a comprar:"/>
+                        <p:inputText id="nombre_producto" value="#{detalleProductoBean.productoAux.nombre}" styleClass="p-d-block"
                                      style="width: 100%"/>
                         <br></br>
                         <p:outputLabel for="cedula_usuario" value="Cedula:"/>
-                        <p:inputText id="cedula_usuario" value="#{detalleServicioBean.usuario.id}" styleClass="p-d-block"
+                        <p:inputText id="cedula_usuario" value="#{detalleProductoBean.usuario.id}" styleClass="p-d-block"
                                      style="width: 100%"/>
                         <br></br>
                         <p:outputLabel for="tarjeta_usuario" value="Tarjeta"/>
-                        <p:inputText id="tarjeta_usuario" value="#{detalleServicioBean.usuario.numeroTarjeta}" styleClass="p-d-block"
+                        <p:inputText id="tarjeta_usuario" value="#{detalleProductoBean.usuario.numeroTarjeta}" styleClass="p-d-block"
                                      style="width: 100%"/>
 
                     </div>
@@ -128,7 +124,7 @@
 
 
                 <f:facet name="footer">
-                    <p:commandButton style="min-width: 30%" value="Adquirir" action="#{detalleServicioBean.adquirirServicioGuarderia}"
+                    <p:commandButton style="min-width: 30%" value="Adquirir" action="#{detalleProductoBean.adquirirProducto}"
                                      styleClass="ui-button-raised ui-button-success ui-button-flat"
                                      update="@form" />
 
@@ -161,7 +157,7 @@
 
                     <div class="col-2">
                         <div class="fotox">
-                            <img src="resources/img/tarjeta-de-credito%20(1).png" alt="" />
+                            <img src="resources/img/tarjeta-de-credito%20(1).png" alt="" style="margin-top: 75px"/>
                         </div>
                     </div>
                 </div>

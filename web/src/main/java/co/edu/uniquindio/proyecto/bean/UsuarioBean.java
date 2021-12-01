@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@ViewScoped
+@RequestScope
 public class UsuarioBean implements Serializable {
 
     @Autowired
@@ -31,7 +32,8 @@ public class UsuarioBean implements Serializable {
     private CiudadServicio ciudadServicio;
 
     @Autowired
-    private MailService mailService;
+    @Getter @Setter
+    private ServicioServicio servicioServicio;
 
     @Getter @Setter
     private Usuario usuario;
@@ -51,6 +53,18 @@ public class UsuarioBean implements Serializable {
     @Getter @Setter
     private List<Mascota>mascotasUsuario;
 
+    @Getter
+    @Setter
+    private List<Compra> historialServicios;
+
+    @Getter
+    @Setter
+    private List<Compra> serviciosActivos;
+
+    @Getter
+    @Setter
+    private List<CompraProducto> productos;
+
 
     @PostConstruct
     public void inicializar() {
@@ -58,6 +72,9 @@ public class UsuarioBean implements Serializable {
         this.usuarioAux = obtenerUsuario();
         this.ciudades = ciudadServicio.listarCiudades();
         this.mascotasUsuario = obtenerMascotasUsuario();
+        this.historialServicios = obtenerHistorialServicios();
+        this.serviciosActivos = obtenerServiciosActivos();
+        this.productos = obtenerProductos();
     }
 
     public void registrarUsuario() {
@@ -132,6 +149,58 @@ public class UsuarioBean implements Serializable {
         return null;
     }
 
+    public List<Compra> obtenerHistorialServicios(){
+
+        List<Compra> registrados=null;
+
+        if (personaLogin!=null){
+
+            try{
+                registrados= usuarioServicio.obtenerHistorialServicios(personaLogin.getId());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return registrados;
+    }
+
+    public List<Compra> obtenerServiciosActivos(){
+
+        List<Compra> registrados=null;
+
+        if (personaLogin!=null){
+
+            try{
+                registrados= usuarioServicio.obtenerServiciosActivos(personaLogin.getId());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return registrados;
+    }
+
+    public String metodos(int idCompra, int idServicio){
+
+        cancelarServicio(idServicio,idCompra);
+
+        return "/usuario/perfilUsuario?faces-redirect=true";
+    }
+
+    public List<CompraProducto> obtenerProductos(){
+
+        List<CompraProducto> registrados=null;
+
+        if (personaLogin!=null){
+
+            try{
+                registrados= usuarioServicio.obtenerProductosUsuario(personaLogin.getId());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return registrados;
+    }
+
 
     public List<Mascota> obtenerMascotasUsuario(){
 
@@ -165,14 +234,30 @@ public class UsuarioBean implements Serializable {
         return usuarioEncontrado;
     }
 
+    public void cancelarServicio(int idServicio,int idCompra) {
 
-    public void sendMailRespuesta(String respuesta,String email){
+        Servicio servicioAux;
+        Compra compraAux;
 
-        String subject = "En hora buena, alguien respondio tu comentario";
-        String message = respuesta;
+        if(personaLogin!= null){
 
-        mailService.sendMail("unilocal0804@gmail.com", email,subject,message);
+            try {
+                servicioAux = servicioServicio.obtenerServicio(idServicio);
 
+                compraAux= usuarioServicio.obtenerCompra(idCompra);
+
+                usuario = usuarioServicio.obtenerUsuario(personaLogin.getId());
+
+                usuarioServicio.cancelarServicio(compraAux.getId(),servicioAux.getId(),usuario.getId());
+                this.serviciosActivos = obtenerServiciosActivos();
+                this.historialServicios= obtenerHistorialServicios();
+
+            } catch (Exception e) {
+                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
+                FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
+            }
+        }
     }
+
 
 }

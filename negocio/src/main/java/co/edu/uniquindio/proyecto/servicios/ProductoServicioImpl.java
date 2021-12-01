@@ -22,10 +22,6 @@ public class ProductoServicioImpl  implements ProductoServicio {
             throw new Exception("No se puede exceder los 100 caracteres");
         }
 
-        if (p.getDescripcion().length()>200){
-            throw new Exception("No se puede exceder los 200 caracteres");
-        }
-
         return productoRepo.save(p);
     }
 

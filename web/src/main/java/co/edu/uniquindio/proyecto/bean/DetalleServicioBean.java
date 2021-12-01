@@ -4,7 +4,6 @@ import co.edu.uniquindio.proyecto.entidades.Mascota;
 import co.edu.uniquindio.proyecto.entidades.Persona;
 import co.edu.uniquindio.proyecto.entidades.Servicio;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
-import co.edu.uniquindio.proyecto.servicios.MailService;
 import co.edu.uniquindio.proyecto.servicios.ServicioServicio;
 import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
 import lombok.Getter;
@@ -32,11 +31,14 @@ public class DetalleServicioBean implements Serializable {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    @Autowired
-    private MailService mailService;
-
     @Getter @Setter
     private Servicio guarderia;
+
+    @Getter @Setter
+    private Servicio veterinaria;
+
+    @Getter @Setter
+    private Servicio hospital;
 
     @Getter @Setter
     private Mascota mascota;
@@ -53,6 +55,8 @@ public class DetalleServicioBean implements Serializable {
 
         try {
             this.guarderia = servicio.obtenerServicioNombre("Guarderia");
+            this.hospital = servicio.obtenerServicioNombre("Hospital");
+            this.veterinaria = servicio.obtenerServicioNombre("Veterinaria");
             this.usuario = new Usuario();
             this.mascota = new Mascota();
         } catch (Exception e) {
@@ -87,22 +91,57 @@ public class DetalleServicioBean implements Serializable {
         }
     }
 
-    public void sendMailComentario(){
 
-        String subject = "¡Tu comentario se registro con exito!";
-        String message = "Cordial saludo, este correo es para informarte que acabas de publicar un comentario, ¡gracias por tu aporte!";
+    public void adquirirServicioHospital() {
 
-        mailService.sendMail("unilocal0804@gmail.com", personaLogin.getEmail(),subject,message);
+        Servicio servicioEncontrado;
+        Mascota mascotaUsuario;
 
+        if(personaLogin!= null){
+
+            try {
+
+                usuario = usuarioServicio.obtenerUsuario(personaLogin.getId());
+                mascotaUsuario = usuarioServicio.obtenerMascotaUsuario(mascota.getNombre(),usuario.getId());
+
+                servicioEncontrado = servicio.obtenerServicioNombre("Hospital");
+                servicioEncontrado.getMascotas().add(mascotaUsuario);
+                servicio.adquirirServicioHospital(servicioEncontrado,mascotaUsuario.getNombre(),usuario.getNombre(),usuario.getId(),usuario.getNumeroTarjeta());
+
+                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! has adquirido el servicio");
+                FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
+
+            } catch (Exception e) {
+                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
+                FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
+            }
+        }
     }
 
-    public void sendMailComentarioCreador(String comentario,String email){
 
-        String subject = "¡Alguien comento tu publicacion!";
-        String message = comentario ;
+    public void adquirirServicioVeterinaria() {
 
-        mailService.sendMail("unilocal0804@gmail.com", email,subject,message);
+        Servicio servicioEncontrado;
+        Mascota mascotaUsuario;
 
+        if(personaLogin!= null){
+
+            try {
+
+                usuario = usuarioServicio.obtenerUsuario(personaLogin.getId());
+                mascotaUsuario = usuarioServicio.obtenerMascotaUsuario(mascota.getNombre(),usuario.getId());
+
+                servicioEncontrado = servicio.obtenerServicioNombre("Veterinaria");
+                servicioEncontrado.getMascotas().add(mascotaUsuario);
+                servicio.adquirirServicioHospital(servicioEncontrado,mascotaUsuario.getNombre(),usuario.getNombre(),usuario.getId(),usuario.getNumeroTarjeta());
+
+                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "¡Super! has adquirido el servicio");
+                FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
+
+            } catch (Exception e) {
+                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
+                FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
+            }
+        }
     }
-
 }

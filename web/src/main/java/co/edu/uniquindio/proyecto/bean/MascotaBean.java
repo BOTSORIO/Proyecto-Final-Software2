@@ -30,7 +30,6 @@ public class MascotaBean implements Serializable {
     private final UsuarioServicio usuarioServicio;
     private final TipoServicio tipoServicio;
     private final ImagenServicio imagenServicio;
-    private final MailService mailService;
 
     @Getter
     @Setter
@@ -51,12 +50,12 @@ public class MascotaBean implements Serializable {
     @Value(value = "#{seguridadBean.persona}")
     private Persona personaLogin;
 
-    public MascotaBean(MascotaServicio lugarServicio, UsuarioServicio usuarioServicio, TipoServicio tipoServicio, ImagenServicio imagenServicio, MailService mailService) {
+    public MascotaBean(MascotaServicio lugarServicio, UsuarioServicio usuarioServicio, TipoServicio tipoServicio, ImagenServicio imagenServicio) {
         this.mascotaServicio = lugarServicio;
         this.usuarioServicio = usuarioServicio;
         this.tipoServicio = tipoServicio;
         this.imagenServicio = imagenServicio;
-        this.mailService = mailService;
+
     }
 
     @PostConstruct

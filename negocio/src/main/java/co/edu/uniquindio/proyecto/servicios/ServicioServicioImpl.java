@@ -3,6 +3,9 @@ package co.edu.uniquindio.proyecto.servicios;
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.repositorios.*;
 import org.springframework.stereotype.Service;
+
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,8 +45,6 @@ public class ServicioServicioImpl implements ServicioServicio{
 
             servicioEncontrado.setNombre(s.getNombre());
             servicioEncontrado.setDescripcion(s.getDescripcion());
-            servicioEncontrado.setHoraInicio(s.getHoraInicio());
-            servicioEncontrado.setHoraFin(s.getHoraFin());
         }else {
             throw new Exception("El servicio que desea modificar no existe");
         }
@@ -91,10 +92,51 @@ public class ServicioServicioImpl implements ServicioServicio{
         Compra compra = new Compra();
         Usuario usuario = usuarioRepo.obtenerUsuarioCompra(nombreUsuario,cedulaUsuario,numeroTarjeta);
 
+        Date inicio = new Date();
+
         if(servicio != null && usuario!=null){
             compra.setServicio(servicio);
             compra.setUsuario(usuario);
+            compra.setEstado(true);
+            compra.setHoraInicio(inicio);
             compraRepo.save(compra);
+            servicio.getCompras().add(compra);
+            servicioRepo.save(servicio);
+        }
+    }
+
+
+    @Override
+    public void adquirirServicioHospital(Servicio servicio,String nombreMascota,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception {
+
+        Compra compra = new Compra();
+        Usuario usuario = usuarioRepo.obtenerUsuarioCompra(nombreUsuario,cedulaUsuario,numeroTarjeta);
+
+        if(servicio != null && usuario!=null){
+            compra.setServicio(servicio);
+            compra.setUsuario(usuario);
+            compra.setEstado(true);
+            compra.setHoraInicio(new Date());
+            compraRepo.save(compra);
+            servicio.getCompras().add(compra);
+            servicioRepo.save(servicio);
+        }
+    }
+
+    @Override
+    public void adquirirServicioVet(Servicio servicio,String nombreMascota,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception {
+
+        Compra compra = new Compra();
+        Usuario usuario = usuarioRepo.obtenerUsuarioCompra(nombreUsuario,cedulaUsuario,numeroTarjeta);
+
+        if(servicio != null && usuario!=null){
+            compra.setServicio(servicio);
+            compra.setUsuario(usuario);
+            compra.setEstado(true);
+            compra.setHoraInicio(new Date());
+            compraRepo.save(compra);
+            servicio.getCompras().add(compra);
+            servicioRepo.save(servicio);
         }
     }
 
