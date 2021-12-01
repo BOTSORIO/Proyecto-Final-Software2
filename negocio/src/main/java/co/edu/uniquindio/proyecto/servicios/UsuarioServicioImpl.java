@@ -246,10 +246,9 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     public void cancelarServicio(int idCompra,int idServicio,String cedula) throws Exception{
 
         Usuario usuario = usuarioRepo.obtenerUsuarioCedula(cedula);
-        Servicio servicio = servicioServicio.obtenerServicio(idServicio);
         Date devolucion = new Date();
 
-        Compra compra = compraRepo.obtenerServicioUsuario(servicio.getId(),usuario.getId());
+        Compra compra = compraRepo.obtenerCompraUsuario(idCompra,usuario.getId());
 
         if (compra !=null && compra.getEstado()){
 
