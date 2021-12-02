@@ -44,6 +44,11 @@ public class Producto implements Serializable {
     @ManyToOne
     private CategoriaProducto categoria;
 
+    //================================= RELACION CON LA ENTIDAD RESENIA =================================//
+    @OneToMany(mappedBy = "producto")
+    @ToString.Exclude
+    private List<Resenia> resenias;
+
     //================================= RELACION CON LA ENTIDAD IMAGEN =================================//
     @OneToMany(mappedBy = "producto",fetch=FetchType.EAGER)
     @ToString.Exclude

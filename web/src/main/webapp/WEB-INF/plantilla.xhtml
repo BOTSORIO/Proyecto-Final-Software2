@@ -127,6 +127,13 @@
 
                         </ul>
                         <div class="d-flex">
+                            <h:form class="d-flex me-2">
+                                <p:inputText styleClass="form-control me-2 input-search"
+                                             placeholder="¿Qué producto está buscando?"
+                                             value="#{busquedaBean.busqueda}"/>
+                                <p:commandButton styleClass="btn btn-outline-light btn-buscar" value="Buscar"
+                                                 action="#{busquedaBean.buscar}"/>
+                            </h:form>
                             <p:commandButton styleClass="ui-button-raised ui-button-secondary" value="Login"
                                              onclick="PF('dlg1').show()" icon="pi pi-sign-in" iconPos="left"
                                              rendered="#{!seguridadBean.autenticado}" style="background: #34495E"/>

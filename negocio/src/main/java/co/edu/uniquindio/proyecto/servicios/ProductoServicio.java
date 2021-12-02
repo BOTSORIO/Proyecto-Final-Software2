@@ -15,6 +15,10 @@ public interface ProductoServicio {
 
     Producto obtenerProducto(int id) throws Exception;
 
+    List<Producto> buscarProductos(String cadena);
+
+    void ingresarResenia(Resenia r, Producto producto) throws Exception;
+
     Producto obtenerProductoNombre(String nombre) throws Exception;
 
     List<Producto> listarProductos();

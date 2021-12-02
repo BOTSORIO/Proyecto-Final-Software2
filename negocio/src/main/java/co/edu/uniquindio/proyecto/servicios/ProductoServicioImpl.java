@@ -1,7 +1,9 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.Producto;
+import co.edu.uniquindio.proyecto.entidades.Resenia;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
+import co.edu.uniquindio.proyecto.repositorios.ReseniaRepo;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -10,9 +12,11 @@ import java.util.Optional;
 public class ProductoServicioImpl  implements ProductoServicio {
 
     private final ProductoRepo productoRepo;
+    private final ReseniaRepo reseniaRepo;
 
-    public ProductoServicioImpl(ProductoRepo productoRepo) {
+    public ProductoServicioImpl(ProductoRepo productoRepo, ReseniaRepo reseniaRepo) {
         this.productoRepo = productoRepo;
+        this.reseniaRepo = reseniaRepo;
     }
 
     @Override
@@ -81,6 +85,27 @@ public class ProductoServicioImpl  implements ProductoServicio {
 
         return productoEncontrado;
     }
+
+    @Override
+    public void ingresarResenia(Resenia r, Producto producto) throws Exception {
+
+        try {
+            if (producto != null) {
+
+                r.setProducto(producto);
+                reseniaRepo.save(r);
+
+            }
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Producto> buscarProductos(String cadena) {
+        return productoRepo.busquedaProductosNombre(cadena);
+    }
+
 
     @Override
     public List<Producto> listarProductos() {

@@ -29,6 +29,19 @@ public class DetalleProductoBean implements Serializable {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
+    @Autowired
+    private ReseniaServicio reseniaServicio;
+
+    @Getter
+    @Setter
+    private Resenia reseniaNueva;
+
+    @Getter @Setter
+    private int calificacionPromedio;
+
+    @Getter @Setter
+    private List<Resenia> reseniasDetal;
+
     @Getter @Setter
     private Producto producto;
 
@@ -53,12 +66,14 @@ public class DetalleProductoBean implements Serializable {
         this.productos = productoServicio.listarProductos();
         this.usuario = new Usuario();
         this.productoAux = new Producto();
+        this.reseniaNueva = new Resenia();
 
         if (idproducto!=null && !"".equals(idproducto)){
             try {
                 int id = Integer.parseInt(idproducto);
 
                 this.producto = productoServicio.obtenerProducto(id);
+                this.reseniasDetal =  obtenerResenias();
                 this.urlImagenes = new ArrayList<>();
 
                 List<Imagen>imagenes = producto.getImagenes();
@@ -110,6 +125,49 @@ public class DetalleProductoBean implements Serializable {
                 FacesContext.getCurrentInstance().addMessage("mensajePersonalizado", facesMsg);
             }
         }
+    }
+
+    public List<Resenia> obtenerResenias(){
+
+        List<Resenia> resenias;
+
+        if (idproducto!=null){
+
+            int id = Integer.parseInt(idproducto);
+
+            try {
+                resenias = reseniaServicio.obtenerReseniasProducto(id);
+
+                return resenias;
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
+
+    public String ingresarResenia(){
+
+        Producto productoEncontrado;
+
+        try {
+            int id = Integer.parseInt(idproducto);
+            productoEncontrado = productoServicio.obtenerProducto(id);
+
+            productoServicio.ingresarResenia(reseniaNueva,productoEncontrado);
+            this.reseniaNueva = new Resenia();
+
+            return "detalleProducto?faces-redirect=true&amp;producto="+idproducto;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return "detalleProducto?faces-redirect=true&amp;producto="+idproducto;
+
     }
 
 
