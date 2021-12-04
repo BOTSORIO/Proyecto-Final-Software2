@@ -21,6 +21,7 @@ public class TrabajadorServicioImpl implements TrabajadorServicio {
         Optional<Trabajador> trabajadorEmail = trabajorRepo.findByEmail(email);
 
         return  trabajadorEmail.isPresent();
+
     }
 
     @Override

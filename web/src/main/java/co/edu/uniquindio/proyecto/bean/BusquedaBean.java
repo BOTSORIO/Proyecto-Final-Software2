@@ -36,15 +36,15 @@ public class BusquedaBean implements Serializable {
 
             productos=  productoServicio.buscarProductos(busquedaParam);
         }
+
     }
-
-
 
     public String buscar(){
         if(!busqueda.isEmpty()){
             return "resultadoBusqueda?faces-redirect=true&amp;busqueda="+busqueda;
         }
         return "";
+
     }
 
     public String getBusqueda() {
@@ -62,5 +62,4 @@ public class BusquedaBean implements Serializable {
     public void setBusquedaParam(String busquedaParam) {
         this.busquedaParam = busquedaParam;
     }
-
 }

@@ -62,6 +62,7 @@ public class DetalleServicioBean implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
 

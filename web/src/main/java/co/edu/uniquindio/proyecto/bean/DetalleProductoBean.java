@@ -100,6 +100,7 @@ public class DetalleProductoBean implements Serializable {
 
     public String irADetalle(int idProducto){
         return  "/detalleProducto?faces-redirect=true&amp;producto="+idProducto;
+
     }
 
 

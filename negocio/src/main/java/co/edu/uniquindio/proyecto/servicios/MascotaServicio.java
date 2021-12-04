@@ -25,5 +25,4 @@ public interface MascotaServicio {
     List<Mascota> buscarMascotas(String nombre);
 
     List<Mascota> obtenerMascotasPorTipo(String tipo);
-
 }

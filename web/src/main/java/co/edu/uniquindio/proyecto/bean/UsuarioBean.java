@@ -184,6 +184,7 @@ public class UsuarioBean implements Serializable {
         cancelarServicio(idServicio,idCompra);
 
         return "/usuario/perfilUsuario?faces-redirect=true";
+
     }
 
     public List<CompraProducto> obtenerProductos(){

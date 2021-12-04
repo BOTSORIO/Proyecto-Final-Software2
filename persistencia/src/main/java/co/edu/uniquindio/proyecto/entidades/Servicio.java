@@ -58,6 +58,7 @@ public class Servicio implements Serializable {
         this.trabajador = trabajador;
         mascotas = new ArrayList<>();
         compras = new ArrayList<>();
+
     }
 
     public Servicio(String nombre, String descripcion, double precio,Administrador administrador,Trabajador trabajador) {

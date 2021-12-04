@@ -23,4 +23,5 @@ public interface ProductoRepo extends JpaRepository<Producto,Integer> {
 
     @Query("select r from Producto p join p.resenias r where p.id = :idProducto")
     List<Resenia> obtenerReseniasProducto(int idProducto);
+
 }

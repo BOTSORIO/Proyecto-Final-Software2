@@ -32,5 +32,4 @@ public class ServicioBean implements Serializable {
     public void inicializar() {
 
     }
-
 }

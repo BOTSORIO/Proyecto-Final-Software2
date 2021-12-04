@@ -59,6 +59,7 @@ public class Usuario extends Persona implements Serializable {
         super(id, nombre, nickname, password, email);
         mascotas= new ArrayList<>();
         compras= new ArrayList<>();
+
     }
 
 }
