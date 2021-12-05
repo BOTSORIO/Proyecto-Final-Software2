@@ -22,4 +22,5 @@ public interface ProductoServicio {
     Producto obtenerProductoNombre(String nombre) throws Exception;
 
     List<Producto> listarProductos();
+
 }

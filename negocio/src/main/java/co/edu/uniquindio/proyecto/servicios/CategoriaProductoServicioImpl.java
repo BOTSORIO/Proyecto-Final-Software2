@@ -22,7 +22,6 @@ public class CategoriaProductoServicioImpl implements CategoriaProductoServicio 
         if (c.getNombre().length() >100){
             throw new Exception("No se puede exceder los 100 caracteres");
         }
-
         return categoriaRepo.save(c);
     }
 
@@ -50,6 +49,7 @@ public class CategoriaProductoServicioImpl implements CategoriaProductoServicio 
         }else {
             throw new Exception("La categoria a eliminar no existe");
         }
+
     }
 
 

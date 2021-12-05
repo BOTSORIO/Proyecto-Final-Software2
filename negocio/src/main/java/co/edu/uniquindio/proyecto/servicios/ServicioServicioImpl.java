@@ -32,7 +32,6 @@ public class ServicioServicioImpl implements ServicioServicio{
         if (s.getDescripcion().length()>200){
             throw new Exception("No se puede exceder los 200 caracteres");
         }
-
         return servicioRepo.save(s);
     }
 

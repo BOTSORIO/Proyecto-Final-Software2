@@ -81,7 +81,6 @@ public class MascotaServicioImpl implements MascotaServicio {
         if(mascota==null){
             throw  new Exception("No se encontro la mascota");
         }
-
         return mascota;
     }
 

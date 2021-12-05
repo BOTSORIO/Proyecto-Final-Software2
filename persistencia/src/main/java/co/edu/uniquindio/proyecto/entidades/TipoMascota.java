@@ -37,6 +37,7 @@ public class TipoMascota implements Serializable {
     public TipoMascota(String nombre) {
         this.nombre = nombre;
         mascotas= new ArrayList<>();
+
     }
 
 }

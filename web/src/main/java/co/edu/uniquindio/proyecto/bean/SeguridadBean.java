@@ -39,7 +39,6 @@ public class SeguridadBean implements Serializable {
     @Getter @Setter
     private String rol;
 
-
     public String iniciarSesion(){
 
         if (email!=null && password!=null) {

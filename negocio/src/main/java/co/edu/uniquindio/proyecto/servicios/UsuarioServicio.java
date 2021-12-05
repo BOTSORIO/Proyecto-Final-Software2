@@ -39,5 +39,4 @@ public interface UsuarioServicio {
     void adquirirProducto(Producto producto,String nombreUsuario,String cedulaUsuario, String numeroTarjeta) throws Exception;
 
     List<Usuario> listarUsuarios();
-
 }

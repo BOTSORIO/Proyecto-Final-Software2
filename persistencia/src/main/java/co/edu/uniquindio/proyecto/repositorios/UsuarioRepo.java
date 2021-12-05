@@ -38,5 +38,4 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
 
     List<Usuario> findByNombre(String nombre);
 
-
 }

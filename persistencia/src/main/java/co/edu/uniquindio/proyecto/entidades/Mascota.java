@@ -84,7 +84,6 @@ public class Mascota implements Serializable {
         this.imagenes = imagenes;
         this.usuario  = usuario;
         this.tipo = tipo;
-
     }
 
     public String getImagenPrincipal(){
@@ -96,5 +95,4 @@ public class Mascota implements Serializable {
 
         return "default.png";
     }
-
 }

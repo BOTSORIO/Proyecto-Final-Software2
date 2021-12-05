@@ -15,4 +15,5 @@ public interface CategoriaProductoServicio {
     CategoriaProducto obtenerCategoria(int id) throws Exception;
 
     List<CategoriaProducto> listarCategorias();
+
 }
