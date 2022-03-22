@@ -16,7 +16,7 @@
     <ui:define name="content">
 
         <p:card styleClass="card"
-                style="border-radius: 15px;margin-left: 30%; margin-right: 30%; margin-top: 2%; margin-bottom: 2%">
+                style="border-radius: 15px;margin-left: 30%; margin-right: 30%; margin-top: 5%">
             <f:facet name="title">
                 <font color="#000000"
                       face="tahoma">Eliminar cuenta</font>
@@ -42,11 +42,12 @@
 
                 <br></br>
                 <br></br>
-                <h:panelGrid id="Botones" columns="2" width="100%">
+                <h:panelGrid id="Botones" style="text-align: center" columns="2" width="100%">
+                    <p:button href="/index.xhtml" value="Volver" style="width: 120px;"/>
+
                     <p:commandButton action="#{usuarioBean.eliminarUsuario}" value="Eliminar"
                                      update="@form"
-                                     style="width: 120px; margin-left: 35%; margin-top: 5%"/>
-                    <p:button href="/index.xhtml" value="Volver" style="width: 120px; margin-left: 20%; margin-top: 5%"/>
+                                     style="width: 120px;"/>
                     <p:growl showDetail="true"/>
                 </h:panelGrid>
 

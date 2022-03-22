@@ -15,39 +15,37 @@
     <ui:define name="content">
 
         <div class="row">
-
             <div class="col">
-                <img src="${pageContext.request.contextPath}/resources/img/CUsuario.jpg" alt="" style="margin-left: 20%;height: 70%;width: 70%; margin-top: 15%"/>
+                <img id="img-user" src="${pageContext.request.contextPath}/resources/img/CUsuario.jpg" alt=""/>
             </div>
 
         <div class="col">
-        <p:card styleClass="card"
-                style="border-radius: 15px;margin-left: 8%; margin-right: 20%; margin-top: 10%; margin-bottom: 2%; width: 80%;">
+        <p:card id="card-user">
             <f:facet name="title">
                 <font color="#000000"
                       face="tahoma">¡Regístrese!</font>
             </f:facet>
 
-            <p><font color="#000000" >¡Hola! en el siguiente formulario puedes indicarnos tus datos para poder registrarte y poder disfrutar de todo lo que te ofrecemos.</font></p>
+            <p id="context-user"><font color="#000000" >¡Hola! en el siguiente formulario puedes indicarnos tus datos para poder registrarte y poder disfrutar de todo lo que te ofrecemos.</font></p>
 
-            <h:form>
+            <h:form id="form-user">
                 <h:panelGrid columns="2" cellpadding="5" width="100%">
                     <p:outputLabel for="cedula_usuario" value="Cedula:"/>
-                    <p:inputText id="cedula_usuario" value="#{usuarioBean.usuario.id}" style="width: 100%"
+                    <p:inputText id="cedula_usuario" value="#{usuarioBean.usuario.id}"
                                  required="true"
                                  requiredMessage="Ups! olvidaste el id"/>
 
                     <p:outputLabel for="nombre_usuario" value="Nombre:"/>
-                    <p:inputText id="nombre_usuario" value="#{usuarioBean.usuario.nombre}" style="width: 100%"
+                    <p:inputText id="nombre_usuario" value="#{usuarioBean.usuario.nombre}"
                                  required="true" requiredMessage="Ups! olvidaste el nombre de usuario"/>
 
 
                     <p:outputLabel for="nickName_usuario" value="Nickname:"/>
-                    <p:inputText id="nickName_usuario" value="#{usuarioBean.usuario.nickname}" style="width: 100%"
+                    <p:inputText id="nickName_usuario" value="#{usuarioBean.usuario.nickname}"
                                  required="true" requiredMessage="Ups! olvidaste el nickname"/>
 
                     <p:outputLabel for="email_usuario" value="Email:"/>
-                    <p:inputText id="email_usuario" value="#{usuarioBean.usuario.email}" style="width: 100%"
+                    <p:inputText id="email_usuario" value="#{usuarioBean.usuario.email}"
                                  required="true"
                                  requiredMessage="Ups! olvidaste el email"/>
 
@@ -55,7 +53,7 @@
                     <p:outputLabel for="ciudad_usuario" value="Ciudad:"/>
                     <p:selectOneMenu id="ciudad_usuario" value="#{usuarioBean.usuario.ciudad}"
                                      converter="#{ciudadConverter}"
-                                     redisplay="true" style="width: 100%" required="true"
+                                     redisplay="true" required="true"
                                      requiredMessage="Ups! olvidaste seleccionar la ciudad">
                         <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
                         <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}" value="#{usuarioBean.ciudades}"/>
@@ -65,23 +63,17 @@
                     <p:outputLabel for="contrasenia_usuario" value="Contraseña:"/>
                     <p:password id="contrasenia_usuario" value="#{usuarioBean.usuario.password}" feedback="true"
                                 promptLabel="Ingresa tu contraseña" weakLabel="Débil"
-                                goodLabel="Buena" strongLabel="Fuerte" redisplay="true" style="width: 100%"
+                                goodLabel="Buena" strongLabel="Fuerte" redisplay="true"
                                 required="true"
                                 requiredMessage="Ups! olvidaste la contraseña"/>
-
                 </h:panelGrid>
                 <br></br>
+                <h:panelGrid id="buttonsu" style="text-align: center" columns="2" width="100%">
+                    <p:button id="button2" style="width: 140px" href="/index.xhtml" value="Volver" />
 
-                <div class="form-group row justify-content-center" style="margin: 5%">
-                    <div class="col">
-                        <p:commandButton action="#{usuarioBean.registrarUsuario}" value="Crear"
-                                         update="@form"
-                                         style="background: #2F8DF1;width: 150px;margin-left: 20%"/>
-                    </div>
-                    <div class="col">
-                        <p:button href="/index.xhtml" value="Volver"  style="background: #2F8DF1;width: 150px;margin-left: 8%"/>
-                    </div>
-                </div>
+                    <p:commandButton id="buttonu" style="width: 140px" action="#{usuarioBean.registrarUsuario}" value="Registrar"
+                    update="form-user"/>
+                </h:panelGrid>
                 <p:growl showDetail="true"/>
             </h:form>
         </p:card>

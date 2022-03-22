@@ -9,6 +9,201 @@
     background: white;
 }
 
+#title{
+    margin-top: 3%;
+    text-align: center;
+}
+
+#encabezado{
+    margin-top: 3%;
+    text-align: center;
+}
+
+#table {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+}
+
+#table #table-view{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+#table #table-view #t-v-c{
+    height: 550px;
+    display: block;
+    margin: auto;
+}
+
+#table #table-view #t-v-c #div-imgt{
+    text-align: center;
+}
+
+#table #table-view #t-v-c #div-imgt #imgt{
+    height: 250px;
+    width: 280px;
+}
+
+#table #table-view #t-v-c #div-info{
+    text-align: center;
+}
+
+#table #table-view #t-v-c #div-button{
+    margin-top: 20px;
+    text-align: center;
+}
+
+#table #table-view #div-list-view{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#table #table-view #div-list-view #div-imgl{
+    margin-bottom: 30px;
+    margin-top: 30px
+}
+
+#table #table-view #div-list-view #div-imgl #imgl{
+    height:150px;
+    width:150px;
+}
+
+#table #table-view #div-list-view #div-info2{
+    margin-top: 50px;
+}
+
+#table #table-view #div-list-view #div-buttonl{
+    margin-top: 90px;
+    margin-left: 130px;
+}
+
+#title-index{
+    margin-left: 28px;
+    margin-top: 30px;
+}
+
+#contex-index{
+    margin-left: 24px;!important;
+    text-align: left;!important;
+}
+
+#contex2-index{
+    margin-left: 24px;!important;
+    text-align: left;!important;
+}
+
+#card-index{
+    text-align: justify;
+    margin-left: 60px;
+    width: 91%;
+    height: 18%;
+    background:#2F8DF1;
+}
+
+#div-index{
+    margin-top: 8%;
+}
+
+#img-index{
+    height: 80%; !important;
+    width: 86%; !important;
+    margin-right: 9%;!important;
+    margin-left: 9%;!important;
+    margin-top: 40px;!important;
+}
+
+#card-index #title-cardi{
+    margin-top: -12px;
+}
+
+#card-index #contex-card{
+    text-align: justify;
+}
+
+#div-hosp{
+    width: 60%;
+}
+
+#div-hosp #img-hosp{
+    height: 45%;!important;
+    width: 80.5%;!important;
+    text-align:center;
+    margin-bottom: 2em;!important;
+    margin-top: 40px;
+    margin-left: 15%;!important;
+}
+
+#div-hosp #card-hosp{
+    background: #2F8DF1;
+    width: 80.5%;!important;
+    height: 45%;!important;
+    margin-left: 15%;!important;
+}
+
+#div-hosp2{
+    margin-top: 20px;
+    margin-left: 50px;
+    width: 80.5%;
+}
+
+#div-hosp2 #card2-hosp{
+    width: 80.5%;
+    margin-bottom: 2em;
+    height: 90%;
+    margin-left: 4%;
+}
+
+#div-hosp2 #card2-hosp #title-hosp{
+    text-align: center;
+}
+
+#div-hosp2 #card2-hosp #context-hosp{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#img-user{
+    margin-left: 12%;
+    height: 75%;
+    width: 75%;
+    margin-top: 10%;
+}
+
+#card-user{
+    border-radius: 10px;
+    margin-top: 10%;
+    width: 90%;
+}
+
+#card-user #context-user{
+    text-align:left;
+}
+
+#card-user #form-user #ciudad_usuario{
+    width: 50%;
+}
+
+#card-user #form-user #buttonsu #button2{
+    background: #2F8DF1;
+}
+
+#card-user #form-user #buttonsu #buttonu{
+    background: #2F8DF1;
+}
+
+#card-update-user{
+    border-radius: 15px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+}
+
+#card-update-user #form-update-user #ciudad_usuario{
+    width: 50%;
+}
+
 .input-search {
     width: 250px;
 }
@@ -56,6 +251,30 @@
     background: none;
 }
 
+#button-dh{
+    width: 50%;
+    margin: 10%;
+    margin-left: 70px;
+}
+
+#button-dg{
+    width: 50%;
+    margin: 10%;
+    margin-left: 70px;
+}
+
+#button-dv{
+    width: 50%;
+    margin: 10%;
+    margin-left: 70px;
+}
+
+#button-cp{
+    width: 50%;
+    margin: 10%;
+    margin-left: 70px;
+}
+
 .container-lg .card .btn-ver:hover{
     color: black;
     background: white;
@@ -88,7 +307,6 @@
     background: #2F8DF1;
 }
 
-
 @media only screen and (max-width: 800px) {
     .input-search {
         width: 100%;
@@ -104,7 +322,7 @@
     }
 
     .col {
-        margin-top: 5%;
+        margin-top: 8%;
     }
 
     .tarjeta {
@@ -113,7 +331,7 @@
 
 
     .ui-dialog {
-        width: 90% !important;
+        width: 100% !important;
         margin-left: -25%;
     }
 

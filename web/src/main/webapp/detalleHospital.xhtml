@@ -16,63 +16,60 @@
     <ui:define name="title">Hospitalizaciones | Detalle</ui:define>
     <ui:define name="content">
 
-
         <div class="row">
-        <div style="width: 60%" class="col">
-            <img src="${pageContext.request.contextPath}/resources/img/hospital.jpg" alt=""
-                 style="height: 400px;width: 630px; margin: 2%;text-align:center;margin-bottom: 2em; margin-top: 40px;margin-left: 60px"/>
+            <div id="div-hosp" class="col">
 
-            <p:card style="background: #2F8DF1;width: 630px;height: 270px; margin-left: 60px">
-                <f:facet name="title">
-                    <h2> <font color="#FFFFFF"
-                               face="tahoma"> Descripción </font></h2>
-                </f:facet>
+                <img id="img-hosp" src="${pageContext.request.contextPath}/resources/img/hospital.jpg" alt=""/>
 
-                <h5 align="justify">
-                    <font color="#FFFFFF"
-                          face="tahoma">  Trabajamos las 24 horas para brindarle el mejor servicio a tu mascota, un lugar donde se pueda sentir como en casa, brindando una atención con personal 100% capacitado para tu tranquilidad y la de tu querido amigo
-                    </font>
-                </h5>
-                <br></br>
-                <h5 align="justify">
-                    <font color="#FFFFFF"
-                          face="tahoma">
-                        ¡Recuerda!, para adquirir este servicio debes haber ingresado al sistema con anterioridad.
-                    </font>
-                </h5>
-            </p:card>
-        </div>
-
-
-            <div class="col" style="margin-top: 20px;margin-left: 70px;width: 200px;height: 692px">
-                <br></br>
-
-                <p:card style="width: 32rem; margin-bottom: 2em;height: 692px">
-                    <f:facet name="title" >
-                        <h1 style="text-align: center;"> <font color="#2F8DF1"
-                            face="tahoma">Hospitalizaciones CarePet</font> </h1>
-
+                <p:card id="card-hosp">
+                    <f:facet name="title">
+                        <h2><font color="#FFFFFF" face="tahoma"> Descripción </font></h2>
                     </f:facet>
 
-                    <h5 align="justify" style="margin-left: 2%;margin-right: 2%">
+                    <h5 align="justify">
+                        <font color="#FFFFFF"
+                              face="tahoma"> Trabajamos las 24 horas para brindarle el mejor servicio a tu mascota, un lugar donde se pueda sentir como en casa, brindando una atención con personal 100% capacitado para tu tranquilidad y la de tu querido amigo
+                        </font>
+                    </h5>
+                    <br></br>
+                    <h5 align="justify">
+                        <font color="#FFFFFF"
+                              face="tahoma">
+                            ¡Recuerda!, para adquirir este servicio debes haber ingresado al sistema con anterioridad.
+                        </font>
+                    </h5>
+                </p:card>
+            </div>
+
+            <div id="div-hosp2" class="col">
+                <br></br>
+
+                <p:card id="card2-hosp">
+                    <f:facet name="title">
+                        <h1 id="title-hosp"><font color="#2F8DF1" face="tahoma">Hospitalizaciones CarePet</font></h1>
+                    </f:facet>
+
+                    <h5 id="context-hosp" align="justify">
                         <font color="#000000"
                               face="tahoma"> Nuestro servicio de hospitalización es de los mejores, tú y tu mascota podran estar seguros de que haremos hasta lo imposible para que mejore de cualquier dolecia que presente.</font>
                     </h5>
 
                     <br></br>
 
-                    <h5 style="margin-left: 2%;margin-right: 2%"> <font color="#000000"
-                               face="tahoma"> <b>Precio por consulta:</b> #{detalleServicioBean.hospital.precio} </font>
+                    <h5 style="margin-left: 2%;margin-right: 2%"><font color="#000000"
+                                                                       face="tahoma">
+                        <b>Precio por consulta:</b> #{detalleServicioBean.hospital.precio} </font>
                     </h5>
                     <br></br>
-                    <h5 style="margin-left: 2%;margin-right: 2%"> <font color="#000000"
-                               face="tahoma"> El costo prodra incrementar dependiendo de las complicaciones de tu mascota</font>
+                    <h5 style="margin-left: 2%;margin-right: 2%"><font color="#000000"
+                                                                       face="tahoma"> El costo prodra incrementar dependiendo de las complicaciones de tu mascota</font>
                     </h5>
 
                     <br></br>
 
-                    <h5 style="margin-left: 2%;margin-right: 2%"> <font color="#000000"
-                               face="tahoma"> <b>Tefelono de contacto:</b> 3226346138 </font>
+                    <h5 style="margin-left: 2%;margin-right: 2%"><font color="#000000"
+                                                                       face="tahoma">
+                        <b>Tefelono de contacto:</b> 3226346138 </font>
                     </h5>
                     <br></br>
                     <div align="center">
@@ -80,13 +77,13 @@
                     </div>
                     <h:panelGrid rendered="#{seguridadBean.autenticado}" style="display: block;text-align: center">
                         <br></br>
-                        <div class="row" align="center" style="margin-top: 2%; margin-bottom: 2%" >
+                        <div class="row" align="center" style="margin-top: 2%; margin-bottom: 2%">
                             <div class="col">
                                 <p>Para adquirir este servicio por favor presiona el botón y completa los datos solicitados </p>
-                                <p:commandButton rendered="#{seguridadBean.autenticado}" styleClass="ui-button-raised ui-button" value="Adquirir"
+                                <p:commandButton rendered="#{seguridadBean.autenticado}"
+                                                 styleClass="ui-button-raised ui-button" value="Adquirir"
                                                  onclick="PF('dlg1').show()"
                                                  style="background: #2F8DF1 "/>
-
                             </div>
                         </div>
                     </h:panelGrid>
@@ -100,19 +97,23 @@
                 <div class="row">
                     <div class="col-md-8">
                         <p:outputLabel for="nombre_usuario" value="Nombre:"/>
-                        <p:inputText id="nombre_usuario" value="#{detalleServicioBean.usuario.nombre}" styleClass="p-d-block"
+                        <p:inputText id="nombre_usuario" value="#{detalleServicioBean.usuario.nombre}"
+                                     styleClass="p-d-block"
                                      style="width: 100%"/>
 
                         <p:outputLabel for="nombre_mascota" value="Nombre de tu mascota:"/>
-                        <p:inputText id="nombre_mascota" value="#{detalleServicioBean.mascota.nombre}" styleClass="p-d-block"
+                        <p:inputText id="nombre_mascota" value="#{detalleServicioBean.mascota.nombre}"
+                                     styleClass="p-d-block"
                                      style="width: 100%"/>
                         <br></br>
                         <p:outputLabel for="cedula_usuario" value="Cedula:"/>
-                        <p:inputText id="cedula_usuario" value="#{detalleServicioBean.usuario.id}" styleClass="p-d-block"
+                        <p:inputText id="cedula_usuario" value="#{detalleServicioBean.usuario.id}"
+                                     styleClass="p-d-block"
                                      style="width: 100%"/>
                         <br></br>
                         <p:outputLabel for="tarjeta_usuario" value="Tarjeta"/>
-                        <p:inputText id="tarjeta_usuario" value="#{detalleServicioBean.usuario.numeroTarjeta}" styleClass="p-d-block"
+                        <p:inputText id="tarjeta_usuario" value="#{detalleServicioBean.usuario.numeroTarjeta}"
+                                     styleClass="p-d-block"
                                      style="width: 100%"/>
 
                     </div>
@@ -126,9 +127,10 @@
 
 
                 <f:facet name="footer">
-                    <p:commandButton style="min-width: 30%" value="Adquirir" action="#{detalleServicioBean.adquirirServicioHospital}"
+                    <p:commandButton style="min-width: 30%" value="Adquirir"
+                                     action="#{detalleServicioBean.adquirirServicioHospital}"
                                      styleClass="ui-button-raised ui-button-success ui-button-flat"
-                                     update="@form" />
+                                     update="@form"/>
 
                     <p:commandButton style="min-width: 30%" value="Registrar tarjeta"
                                      styleClass="ui-button-raised ui-button-secondary ui-button-flat" update="@form"
@@ -140,20 +142,23 @@
 
         <h:form>
             <p:dialog header="Registra tu tarjeta" widgetVar="dlg2" Height="400px" width="40%" showEffect="fade"
-                      closeOnEscape="true" >
+                      closeOnEscape="true">
 
                 <div class="row">
                     <div class="col-md-8">
-                        <p:outputLabel for="numero_tarjeta" value="Número:" />
-                        <p:inputText id="numero_tarjeta" value="#{usuarioBean.usuario.numeroTarjeta}" styleClass="p-d-block"
+                        <p:outputLabel for="numero_tarjeta" value="Número:"/>
+                        <p:inputText id="numero_tarjeta" value="#{usuarioBean.usuario.numeroTarjeta}"
+                                     styleClass="p-d-block"
                                      style="width: 100%"/>
                         <br></br>
                         <p:outputLabel for="fecha_tarjeta" value="Fecha:"/>
-                        <p:inputText id="fecha_tarjeta" value="#{usuarioBean.usuario.fechatarjeta}" styleClass="p-d-block"
+                        <p:inputText id="fecha_tarjeta" value="#{usuarioBean.usuario.fechatarjeta}"
+                                     styleClass="p-d-block"
                                      style="width: 100%"/>
                         <br></br>
                         <p:outputLabel for="codigo_tarjeta" value="Codigo:"/>
-                        <p:inputText id="codigo_tarjeta" value="#{usuarioBean.usuario.codigoTarjeta}" styleClass="p-d-block"
+                        <p:inputText id="codigo_tarjeta" value="#{usuarioBean.usuario.codigoTarjeta}"
+                                     styleClass="p-d-block"
                                      style="width: 100%"/>
                     </div>
 
@@ -165,12 +170,13 @@
                 </div>
 
                 <div align="center">
-                <f:facet name="footer" >
-                    <p:commandButton style="min-width: 30%" value="Registrar tarjeta" action="#{usuarioBean.registrarTarjetaUsuario}"
-                                     styleClass="ui-button-raised ui-button-success ui-button-flat"
-                                     update="@form"/>
-                    <p:growl showDetail="true" />
-                </f:facet>
+                    <f:facet name="footer">
+                        <p:commandButton style="min-width: 30%" value="Registrar tarjeta"
+                                         action="#{usuarioBean.registrarTarjetaUsuario}"
+                                         styleClass="ui-button-raised ui-button-success ui-button-flat"
+                                         update="@form"/>
+                        <p:growl showDetail="true"/>
+                    </f:facet>
                 </div>
             </p:dialog>
         </h:form>
